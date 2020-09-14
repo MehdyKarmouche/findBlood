@@ -12,7 +12,8 @@ const centerSchema = new Schema({
         zipcode: {type:String}
     },
     phone: {type: String, required: true},
-    inNeed: {type:Boolean}
+    inNeed: {type:Boolean},
+    resetLink: {data:String, default: ""}
 
 });
 

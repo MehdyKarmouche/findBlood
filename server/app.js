@@ -13,7 +13,7 @@ var signUpRouter = require('./routes/api/signUp');
 var loginRouter = require('./routes/api/login');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+const database_secret = process.env.DATABASE_SECRET;
 
 
 mongoose.set('useNewUrlParser', true);
@@ -21,7 +21,7 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
-var mongoDB =  'mongodb+srv://Mehdi:Database123@cluster0-8ndrd.mongodb.net/test?retryWrites=true&w=majority';
+var mongoDB =  'mongodb+srv://Mehdi:'+database_secret+'@cluster0-8ndrd.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDb connected"))
   .catch(err => console.log(err));

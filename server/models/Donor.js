@@ -6,7 +6,8 @@ const donorSchema = new Schema({
     city: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
-    bloodType:{type: String, required:false}
+    bloodType:{type: String, required:false},
+    resetLink: {data:String, default: ""}
    
 });
 

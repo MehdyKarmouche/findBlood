@@ -7,7 +7,7 @@ module.exports = function auth(req, res, next) {
 
     // Check if bearer is undefined
     if(typeof bearerHeader !== 'undefined') {
-      const decoded = jwt.verify(bearerHeader, process.env.TOKEN_SECRET);
+      const decoded = jwt.verify(bearerHeader, process.env.TOKEN_CENTER);
 
       // Split at the space
       const bearer = bearerHeader.split(' ');
