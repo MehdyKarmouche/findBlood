@@ -22,13 +22,12 @@ const useStyles = makeStyles(() => ({
 
     typographyStyles: {
         textAlign: "center",
-        height: '50vh',
-        
+        marginTop:"100px"
     },
     title:{
         position:"relative",
-        top:"30%",
-        display:"block"
+        display:"block",
+        top:"25%"
     },
     buttonColumn:{
         display:"block"
@@ -45,6 +44,9 @@ const useStyles = makeStyles(() => ({
     },
     h1:{
         fontSize:"50px"
+    },
+    wrapper: {
+        width:"100%"
     }
     
     
@@ -68,7 +70,7 @@ function HomeContent() {
       
       
     </div>
-    <Container>
+    <Container className={classes.wrapper}>
     <Typography>
     <Grid className={classes.Grid} container spacing={3}>
             <Grid  item xs={6}>
@@ -83,6 +85,7 @@ function HomeContent() {
             </Grid>
         </Grid>
     </Typography>
+
     </Container>
     
     
