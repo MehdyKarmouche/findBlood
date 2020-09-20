@@ -2,12 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
-import Signup from './components/donor/Signup';
+import Signin from './components/donor/Signin';
 
 function App() {
   return (
     <div className="App">
-      <Signup/>
+      <Signin/>
     </div>
   );
 }
