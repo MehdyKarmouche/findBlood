@@ -133,7 +133,7 @@ export default function SignUpForm() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link to="/donor/signin" variant="body2">
+              <Link to="/donor/signin" variant="body2" style={{ textDecoration: 'none' }}>
                 Already have an account? Sign in
               </Link>
             </Grid>

@@ -99,12 +99,12 @@ export default function Signinform() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" style={{ textDecoration: 'none' }}>
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link to="/center/signup" variant="body2">
+              <Link to="/center/signup" variant="body2" style={{ textDecoration: 'none' }}>
                 Don't have an account? Sign Up
               </Link>
             </Grid>
