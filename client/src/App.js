@@ -4,7 +4,8 @@ import './App.css';
 import Home from './components/Home';
 import CenterSignin from './components/center/pages/Signin';
 import DonorSignin from './components/donor/pages/Signin';
-import Signup from './components/center/pages/Signup';
+import CenterSignup from './components/center/pages/Signup';
+import DonorSignup from './components/donor/pages/Signup';
 import NumberOfDonation from './components/center/NumberOfDonations';
 import {BrowserRouter as Router, Route} from  'react-router-dom'
 import { Fragment } from 'react';
@@ -15,6 +16,8 @@ function App() {
       <div className="App">
         <Route exact path="/center/signin" component={CenterSignin} />
         <Route exact path="/donor/signin" component={DonorSignin} />
+        <Route exact path="/center/signup" component={CenterSignup} />
+        <Route exact path="/donor/signup" component={DonorSignup} />
         <Route exact path="/" component={Home} />
       </div>
     </Router>
