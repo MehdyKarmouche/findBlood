@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles(() => ({
@@ -74,14 +75,18 @@ function HomeContent() {
     <Typography>
     <Grid className={classes.Grid} container spacing={3}>
             <Grid  item xs={6}>
-                <Button className={classes.button} display="inline" variant="contained" color="secondary"  size="large">
-                    Center
-                </Button>
+                <Link to="/center/signin" style={{ textDecoration: 'none' }}>
+                    <Button className={classes.button} display="inline" variant="contained" color="secondary"  size="large">
+                        Center
+                    </Button>
+                </Link>
             </Grid>
             <Grid item xs={6}>
-                <Button className={classes.buttonLeft} display="inline" variant="contained" color="secondary" size="large">
-                    Donor
-                </Button>
+                <Link to="/donor/signin" style={{ textDecoration: 'none' }}>
+                    <Button href className={classes.buttonLeft} display="inline" variant="contained" color="secondary" size="large">
+                        Donor
+                    </Button>
+                </Link>
             </Grid>
         </Grid>
     </Typography>
