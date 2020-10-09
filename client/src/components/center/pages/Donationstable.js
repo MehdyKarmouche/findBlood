@@ -9,10 +9,14 @@ import TableRow from '@material-ui/core/TableRow';
 import EditIcon from '@material-ui/icons/Edit';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import Dialog from '@material-ui/core/Dialog';
 import Fab from '@material-ui/core/Fab';
 import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogActions from '@material-ui/core/DialogActions';
 import Title from '../Title';
+import { TextField, Typography } from '@material-ui/core';
 
 
 // Generate Order Data
@@ -39,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
   paper : {
     
   },
-  table: {
-  
+  titleModal: {
+    color:"primary"
   },
   wrap : {
     marginTop:"20px",
@@ -49,18 +53,75 @@ const useStyles = makeStyles((theme) => ({
   },
   margin:{
     marginLeft:"10px"
+  },
+  modalWrap: {
+    
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent:"center",
+    alignItems: 'center',
+  },
+  body: {
+    
   }
+
 }));
 
 export default function Dashboard() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const body = (
+    <div className={classes.body}>
+      <Typography color="primary">Add donation</Typography>
+      <form noValidate>
+      <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="bloodTtype"
+            label="bloodtype"
+            name="bloodtype"
+            autoComplete="bloodtype"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="importance"
+            label="importance"
+            name="importance"
+            autoComplete="importance"
+            
+          />
+      </form>
+      <p id="simple-modal-description">
+        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+      </p>
+    </div>
+  );
+
   return (
     <React.Fragment>
       <div className={classes.wrap}>
       <Title>Recent Orders</Title>
-      <Button variant="contained" size="medium" color="secondary">Add Donation  <Fab size="small" color="primary" aria-label="add" className={classes.margin}>
+      <Button onClick={handleOpen} variant="contained" size="medium" color="secondary">Add Donation  <Fab size="small" color="primary" aria-label="add" className={classes.margin}>
         <AddIcon />
-      </Fab></Button>
+        </Fab>
+      </Button>
+     
+
       <Table className={classes.table} size="small">
         <TableHead>
           <TableRow>
@@ -92,7 +153,27 @@ export default function Dashboard() {
         </Link>
       </div>
       </div>
-      
+      <div className={classes.modalWrap}>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <DialogContent>
+        {body}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Confirm
+          </Button>
+        </DialogActions>
+      </Dialog>
+      </div>
+
       
     </React.Fragment>
   );
