@@ -31,12 +31,12 @@ export default function NumDonations() {
   return (
     <React.Fragment>
       <Grid className={classes.root} container spacing={4}>
-        <Grid item xs={6}>
+        <Grid item xs={6} sm={3}>
         <Paper className={classes.paper} elevation={3}>
-      <Title>Completed donations</Title>
-      <h2>
+      <Title>Donations</Title>
+      <Typography component="p" variant="h4">
         100
-      </h2>
+      </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
         on 15 March, 2019
       </Typography>
@@ -46,12 +46,12 @@ export default function NumDonations() {
       </Grid>
       
 
-      <Grid item item xs={6}>
+      <Grid item item xs={6} sm={3}>
         <Paper className={classes.paper} elevation={3}>
         <Title>avg donation/day</Title>
-        <h2>
-          10
-        </h2>
+        <Typography component="p" variant="h4">
+          5
+        </Typography>
         <Typography color="textSecondary" className={classes.depositContext}>
           on 15 March, 2019
         </Typography>

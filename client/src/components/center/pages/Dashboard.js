@@ -26,11 +26,8 @@ function Home() {
     <div className="root">
         <Navbar />
         <div className={classes.content}>
-         <Grid className="numDonations" container spacing={4}>
-            <Grid item>
                     <NumDonations/>
-            </Grid>
-         </Grid>
+           
         <Donationstable/>
         </div>
     </div>
