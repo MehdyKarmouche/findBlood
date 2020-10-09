@@ -70,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [openEdit, setOpenEdit] = React.useState(false)
 
   const handleOpen = () => {
     setOpen(true);
@@ -79,9 +80,50 @@ export default function Dashboard() {
     setOpen(false);
   };
 
+  const handleOpenEdit = () => {
+    setOpenEdit(true);
+  };
+
+  const handleCloseEdit = () => {
+    setOpenEdit(false)
+  };
+
   const body = (
     <div className={classes.body}>
       <Typography color="primary">Add donation</Typography>
+      <form noValidate>
+      <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="bloodTtype"
+            label="bloodtype"
+            name="bloodtype"
+            autoComplete="bloodtype"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="importance"
+            label="importance"
+            name="importance"
+            autoComplete="importance"
+            
+          />
+      </form>
+      <p id="simple-modal-description">
+        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+      </p>
+    </div>
+  );
+
+  const bodyEdit = (
+    <div className={classes.body}>
+      <Typography color="primary">Edit donation</Typography>
       <form noValidate>
       <TextField
             variant="outlined"
@@ -141,7 +183,7 @@ export default function Dashboard() {
               <TableCell>{row.shipTo}</TableCell>
               <TableCell>{row.paymentMethod}</TableCell>
               <TableCell align="right">{row.amount}</TableCell>
-              <TableCell><EditIcon></EditIcon></TableCell>
+              <TableCell><Button onClick={handleOpenEdit} variant="outlined" color="secondary"><EditIcon></EditIcon></Button></TableCell>
 
             </TableRow>
           ))}
@@ -154,25 +196,48 @@ export default function Dashboard() {
       </div>
       </div>
       <div className={classes.modalWrap}>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        <DialogContent>
-        {body}
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Confirm
-          </Button>
-        </DialogActions>
-      </Dialog>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <DialogContent>
+            {body}
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleClose} color="primary">
+              Confirm
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
+      
+
+      <div className={classes.modalWrap}>
+        <Dialog
+          open={openEdit}
+          onClose={handleCloseEdit}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <DialogContent>
+            {bodyEdit}
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseEdit} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleCloseEdit} color="primary">
+              Confirm change
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+      
 
       
     </React.Fragment>
