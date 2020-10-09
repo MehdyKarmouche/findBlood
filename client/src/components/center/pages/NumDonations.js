@@ -35,7 +35,7 @@ export default function NumDonations() {
         <Paper className={classes.paper} elevation={3}>
       <Title>Completed donations</Title>
       <h2>
-        $3,024.00
+        100
       </h2>
       <Typography color="textSecondary" className={classes.depositContext}>
         on 15 March, 2019
@@ -48,9 +48,9 @@ export default function NumDonations() {
 
       <Grid item item xs={6}>
         <Paper className={classes.paper} elevation={3}>
-        <Title>Completed donations</Title>
+        <Title>avg donation/day</Title>
         <h2>
-          $3,024.00
+          10
         </h2>
         <Typography color="textSecondary" className={classes.depositContext}>
           on 15 March, 2019
