@@ -1,15 +1,38 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import Donationstable from './Donationstable';
 import NumDonations from './NumDonations';
 import Navbar from '../../Navbar';
 import {BrowserRouter as Router, Route} from  'react-router-dom'
+import { makeStyles } from '@material-ui/core';
 
+const useStyles = makeStyles(() => ({
+    root: {
+        
+        
+    },
+    NumDonations: {
+        
+    },
+    content: {
+    }
+    
+    
+    
+  }));
 function Home() {
+  const classes = useStyles();
   return (
-    <div>
+    <div className="root">
         <Navbar />
-        <NumDonations/>
+        <div className={classes.content}>
+         <Grid className="numDonations" container spacing={4}>
+            <Grid item>
+                    <NumDonations/>
+            </Grid>
+         </Grid>
         <Donationstable/>
+        </div>
     </div>
   );
 }

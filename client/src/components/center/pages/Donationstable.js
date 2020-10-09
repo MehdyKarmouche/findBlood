@@ -6,6 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import EditIcon from '@material-ui/icons/Edit';
 import Paper from '@material-ui/core/Paper';
 import Title from '../Title';
 
@@ -31,22 +32,34 @@ const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
   },
+  paper : {
+    
+  },
+  table: {
+  
+  },
+  wrap : {
+    marginTop:"20px",
+    marginLeft:"20px"
+    
+  }
 }));
 
 export default function Dashboard() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Paper>
+      <div className={classes.wrap}>
       <Title>Recent Orders</Title>
-      <Table size="small">
+      <Table className={classes.table} size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell>Id</TableCell>
+            <TableCell>BloodType</TableCell>
+            <TableCell>Importance</TableCell>
+            <TableCell>Posted at</TableCell>
+            <TableCell align="right">Interested ppl</TableCell>
+            <TableCell>Edit</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -57,16 +70,20 @@ export default function Dashboard() {
               <TableCell>{row.shipTo}</TableCell>
               <TableCell>{row.paymentMethod}</TableCell>
               <TableCell align="right">{row.amount}</TableCell>
+              <TableCell><EditIcon></EditIcon></TableCell>
+
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      </Paper>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
           See more orders
         </Link>
       </div>
+      </div>
+      
+      
     </React.Fragment>
   );
 }
