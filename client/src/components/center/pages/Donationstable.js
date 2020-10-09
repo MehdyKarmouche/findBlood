@@ -7,6 +7,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import EditIcon from '@material-ui/icons/Edit';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
 import Title from '../Title';
 
@@ -42,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop:"20px",
     marginLeft:"20px"
     
+  },
+  margin:{
+    marginLeft:"10px"
   }
 }));
 
@@ -51,6 +58,9 @@ export default function Dashboard() {
     <React.Fragment>
       <div className={classes.wrap}>
       <Title>Recent Orders</Title>
+      <Button variant="contained" size="medium" color="secondary">Add Donation  <Fab size="small" color="primary" aria-label="add" className={classes.margin}>
+        <AddIcon />
+      </Fab></Button>
       <Table className={classes.table} size="small">
         <TableHead>
           <TableRow>
