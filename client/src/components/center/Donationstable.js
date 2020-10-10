@@ -16,7 +16,7 @@ import Paper from '@material-ui/core/Paper';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import MenuItem from '@material-ui/core/MenuItem';
-import Title from '../Title';
+import Title from './Title';
 import { TextField, Typography } from '@material-ui/core';
 
 const bloodtypes = [
