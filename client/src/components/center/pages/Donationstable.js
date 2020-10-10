@@ -124,6 +124,8 @@ export default function Dashboard() {
   const [openEdit, setOpenEdit] = React.useState(false)
   const [bloodtype,setBloodtype] = React.useState('O+')
   const [importance,setImportance] = React.useState('High')
+  const [bloodtypeEdit,setBloodtypeEdit] = React.useState('O+')
+  const [importanceEdit,setImportanceEdit] = React.useState('High')
 
   const handleOpen = () => {
     setOpen(true);
@@ -149,6 +151,13 @@ export default function Dashboard() {
     setImportance(event.target.value);
   };
 
+  const handleChangeEdit = (event) => {
+    setBloodtypeEdit(event.target.value);
+  };
+
+  const handleChangeImpEdit = (event) => {
+    setImportanceEdit(event.target.value);
+  };
   const body = (
     <div className={classes.body}>
       <Typography color="primary">Add donation</Typography>
@@ -200,27 +209,39 @@ export default function Dashboard() {
       <Typography color="primary">Edit donation</Typography>
       <form >
       <TextField
+            className={classes.menu}
+            id="standard-select-currency"
+            select
+            label="Select blood type"
+            value={bloodtypeEdit}
+            onChange={handleChangeEdit}
             variant="outlined"
-            margin="normal"
             required
-            fullWidth
-            id="bloodTtype"
-            label="bloodtype"
-            name="bloodtype"
-            autoComplete="bloodtype"
-            autoFocus
-          />
+          >
+            {bloodtypes.map((option) => (
+            <MenuItem key={option.id} value={option.id}>
+              {option.bloodtype}
+            </MenuItem>
+          ))}
+          </TextField>
           <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="importance"
-            label="importance"
-            name="importance"
-            autoComplete="importance"
+             className={classes.menu}
+             id="standard-select-currency"
+             select
+             label="Select importance"
+             value={importanceEdit}
+             onChange={handleChangeImpEdit}
+             helperText="Please select the Importance"
+             variant="outlined"
+             required
             
-          />
+          >
+            {importances.map((option) => (
+            <MenuItem key={option.id} value={option.id}>
+              {option.importance}
+            </MenuItem>
+          ))}
+          </TextField>
       </form>
       <p id="simple-modal-description">
         Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
