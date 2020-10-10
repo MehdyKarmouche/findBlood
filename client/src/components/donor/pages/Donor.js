@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../Navbar';
 import CallForAction from './CallForAction';
+import ListDonations from './ListDonations';
 
 
 function Donor() {
@@ -10,7 +11,7 @@ function Donor() {
           <Navbar />
           <div >
             <CallForAction/>      
-          
+            <ListDonations/>
           </div>
       </div>
     );
