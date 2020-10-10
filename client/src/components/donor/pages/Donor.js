@@ -8,16 +8,16 @@ import Home from '../../Home'
 function Donor() {
   
     return (
-      <Router>
+      
         <div className="root">
-            <Route exact path="/" component={Home} />
+            
             <Navbar />
             <div >
               <CallForAction/>      
               <ListDonations/>
             </div>
         </div>
-      </Router>
+      
     );
   }
   
