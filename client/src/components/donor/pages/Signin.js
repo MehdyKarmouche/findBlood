@@ -9,6 +9,7 @@ function Signin() {
   return (
     <Router>
     <div className="Home">
+        
         <Route exact path='/donor/signin' render={props =>
           <div>
             <Navbar/>
@@ -17,6 +18,7 @@ function Signin() {
 
 } />
     <Route exact path="/donor/signup" component={Signup}/>
+    <Route exact path="/" component={Home}/>
     </div>
     </Router>
   );
