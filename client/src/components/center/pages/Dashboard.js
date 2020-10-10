@@ -4,6 +4,7 @@ import Donationstable from './Donationstable';
 import NumDonations from './NumDonations';
 import Navbar from '../../Navbar';
 import {BrowserRouter as Router, Route} from  'react-router-dom'
+import Footer from '../../Footer'
 
 
 
@@ -14,8 +15,9 @@ function Dashboard() {
         <Navbar />
         <div >
           <NumDonations/>      
-        <Donationstable/>
+          <Donationstable/>
         </div>
+        <Footer/>
     </div>
   );
 }

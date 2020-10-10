@@ -4,6 +4,7 @@ import Signinform from '../Signinform';
 import Home from '../../Home'
 import {BrowserRouter as Router, Route} from  'react-router-dom'
 import Signup from './Signup';
+import Footer from '../../Footer'
 
 function Signin() {
   return (
@@ -14,6 +15,7 @@ function Signin() {
           <div>
             <Navbar/>
             <Signinform />
+            <Footer/>
           </div>
 
 } />

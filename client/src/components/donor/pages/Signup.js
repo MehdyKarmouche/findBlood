@@ -3,6 +3,7 @@ import Navbar from '../../Navbar';
 import Signupform from '../Signupform';
 import Signin from './Signin';
 import Home from '../../Home'
+import Footer from '../../Footer'
 import {BrowserRouter as Router, Route} from  'react-router-dom'
 
 function Signup() {
@@ -13,6 +14,7 @@ function Signup() {
           <div>
             <Navbar/>
             <Signupform />
+            <Footer/>
           </div>
 
 } />
