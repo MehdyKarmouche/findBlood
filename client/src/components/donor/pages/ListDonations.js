@@ -74,7 +74,7 @@ function ListDonations(){
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button variant="contained" size="small" color="secondary">
+                    <Button variant="contained" size="small" color="primary">
                       Donate
                     </Button>
                     
