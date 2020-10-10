@@ -164,7 +164,6 @@ export default function Dashboard() {
       <form noValidate>
       <TextField
            className={classes.menu}
-           id="standard-select-currency"
            select
            label="Select blood type"
            value={bloodtype}
@@ -180,7 +179,6 @@ export default function Dashboard() {
           </TextField>
           <TextField
             className={classes.menu}
-            id="standard-select-currency"
             select
             label="Select importance"
             value={importance}
@@ -210,7 +208,6 @@ export default function Dashboard() {
       <form >
       <TextField
             className={classes.menu}
-            id="standard-select-currency"
             select
             label="Select blood type"
             value={bloodtypeEdit}
@@ -226,7 +223,6 @@ export default function Dashboard() {
           </TextField>
           <TextField
              className={classes.menu}
-             id="standard-select-currency"
              select
              label="Select importance"
              value={importanceEdit}
