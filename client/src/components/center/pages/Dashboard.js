@@ -7,7 +7,7 @@ import {BrowserRouter as Router, Route} from  'react-router-dom'
 
 
 
-function Home() {
+function Dashboard() {
   
   return (
     <div className="root">
@@ -20,4 +20,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Dashboard;
