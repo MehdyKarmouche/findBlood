@@ -15,9 +15,59 @@ import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
+import MenuItem from '@material-ui/core/MenuItem';
 import Title from '../Title';
 import { TextField, Typography } from '@material-ui/core';
 
+const bloodtypes = [
+  {
+    bloodtype: 'A+',
+    id:1
+  },
+  {
+    bloodtype: 'A-',
+    id:2
+  },
+  {
+    bloodtype: 'O+',
+    id:3
+  },
+  {
+    bloodtype: 'O-',
+    id:4
+  },
+  {
+    bloodtype: 'B+',
+    id:5
+  },
+  {
+    bloodtype: 'B-',
+    id:6
+  },
+  {
+    bloodtype: 'AB+',
+    id:7
+  },
+  {
+    bloodtype: 'AB-',
+    id:8
+  },
+  
+];
+const importances = [
+  {
+    id:9,
+    importance:"High"
+  },
+  {
+    id:10,
+    importance:"mid",
+  },
+  {
+    id:11,
+    importance:"low"
+  }
+];
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -61,8 +111,9 @@ const useStyles = makeStyles((theme) => ({
     alignContent:"center",
     alignItems: 'center',
   },
-  body: {
-    
+  menu: {
+    width:"100%",
+    marginBottom:"10px",
   }
 
 }));
@@ -71,6 +122,8 @@ export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [openEdit, setOpenEdit] = React.useState(false)
+  const [bloodtype,setBloodtype] = React.useState('O+')
+  const [importance,setImportance] = React.useState('High')
 
   const handleOpen = () => {
     setOpen(true);
@@ -88,32 +141,53 @@ export default function Dashboard() {
     setOpenEdit(false)
   };
 
+  const handleChange = (event) => {
+    setBloodtype(event.target.value);
+  };
+
+  const handleChangeImp = (event) => {
+    setImportance(event.target.value);
+  };
+
   const body = (
     <div className={classes.body}>
       <Typography color="primary">Add donation</Typography>
       <form noValidate>
       <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="bloodTtype"
-            label="bloodtype"
-            name="bloodtype"
-            autoComplete="bloodtype"
-            autoFocus
-          />
+           className={classes.menu}
+           id="standard-select-currency"
+           select
+           label="Select blood type"
+           value={bloodtype}
+           onChange={handleChange}
+           variant="outlined"
+           required
+          >
+            {bloodtypes.map((option) => (
+            <MenuItem key={option.id} value={option.id}>
+              {option.bloodtype}
+            </MenuItem>
+          ))}
+          </TextField>
           <TextField
+            className={classes.menu}
+            id="standard-select-currency"
+            select
+            label="Select importance"
+            value={importance}
+            onChange={handleChangeImp}
+            helperText="Please select the Importance"
             variant="outlined"
-            margin="normal"
             required
-            fullWidth
-            id="importance"
-            label="importance"
-            name="importance"
-            autoComplete="importance"
             
-          />
+          >
+            {importances.map((option) => (
+            <MenuItem key={option.id} value={option.id}>
+              {option.importance}
+            </MenuItem>
+          ))}
+
+          </TextField>
       </form>
       <p id="simple-modal-description">
         Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
@@ -124,7 +198,7 @@ export default function Dashboard() {
   const bodyEdit = (
     <div className={classes.body}>
       <Typography color="primary">Edit donation</Typography>
-      <form noValidate>
+      <form >
       <TextField
             variant="outlined"
             margin="normal"
