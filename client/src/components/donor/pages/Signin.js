@@ -1,10 +1,11 @@
 import React from 'react';
 import Navbar from '../../Navbar';
 import Signinform from '../Signinform';
+import Home from '../../Home'
 import {BrowserRouter as Router, Route} from  'react-router-dom'
 import Signup from './Signup';
 
-function Home() {
+function Signin() {
   return (
     <Router>
     <div className="Home">
@@ -21,4 +22,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Signin;

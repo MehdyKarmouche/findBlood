@@ -4,7 +4,7 @@ import Signinform from '../Signinform';
 import Signup from './Signup';
 import {BrowserRouter as Router, Route} from  'react-router-dom'
 
-function Home() {
+function Signin() {
   return (
     <Router>
       <div className="Home">
@@ -20,4 +20,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Signin;
