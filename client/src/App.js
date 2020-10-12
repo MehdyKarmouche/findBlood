@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
 import CenterSignin from './components/center/pages/Signin';
@@ -9,9 +8,7 @@ import CenterForgot from './components/center/pages/ForgotPassword';
 import Dashboard from './components/center/pages/Dashboard';
 import Donor from './components/donor/pages/Donor';
 import DonorSignup from './components/donor/pages/Signup';
-import NumberOfDonation from './components/center/NumberOfDonations';
 import {BrowserRouter as Router, Route} from  'react-router-dom'
-import { Fragment } from 'react';
 
 function App() {
   return (
