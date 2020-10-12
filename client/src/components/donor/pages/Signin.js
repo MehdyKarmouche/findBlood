@@ -4,6 +4,7 @@ import Signinform from '../Signinform';
 import Home from '../../Home'
 import {BrowserRouter as Router, Route} from  'react-router-dom'
 import Signup from './Signup';
+import ForgotPassword from './ForgotPassword'
 import Footer from '../../Footer'
 
 function Signin() {
@@ -21,6 +22,7 @@ function Signin() {
 } />
     <Route exact path="/donor/signup" component={Signup}/>
     <Route exact path="/" component={Home}/>
+    <Route exact path="/donor/forgot" component={ForgotPassword}/>
     </div>
     </Router>
   );
