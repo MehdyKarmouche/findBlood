@@ -88,7 +88,7 @@ export default function Signinform() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2" style={{ textDecoration: 'none' }}>
+              <Link to="/center/forgot" variant="body2" style={{ textDecoration: 'none' }}>
                 Forgot password?
               </Link>
             </Grid>

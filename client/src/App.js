@@ -5,6 +5,7 @@ import Home from './components/Home';
 import CenterSignin from './components/center/pages/Signin';
 import DonorSignin from './components/donor/pages/Signin';
 import CenterSignup from './components/center/pages/Signup';
+import CenterForgot from './components/center/pages/ForgotPassword';
 import Dashboard from './components/center/pages/Dashboard';
 import Donor from './components/donor/pages/Donor';
 import DonorSignup from './components/donor/pages/Signup';
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/center/dashboard" component={Dashboard} />
         <Route exact path="/donor" component={Donor} />
         <Route exact path="/" component={Home} />
+        <Route exact path="/center/forgot" component={CenterForgot} />
       </div>
     </Router>
   );
