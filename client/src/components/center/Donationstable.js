@@ -61,11 +61,11 @@ const importances = [
   },
   {
     id:10,
-    importance:"mid",
+    importance:"Mid",
   },
   {
     id:11,
-    importance:"low"
+    importance:"Low"
   }
 ];
 
