@@ -61,7 +61,7 @@ function HomeContent() {
       <Container className={classes.containerStyles} >
         <Typography className={classes.typographyStyles} component="div">
             <div className={classes.title}>
-                <h1 className={classes.h1}>Donate Your Blood.  Save Lifes.</h1>
+                <h1 className={classes.h1}>Donate Your Blood.  Save Lives.</h1>
                 <p className={classes.p}>This is an app that allows blood centers to notify potential donors about blood needs. </p>
             </div>
         </Typography>
