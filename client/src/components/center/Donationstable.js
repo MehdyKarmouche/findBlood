@@ -14,6 +14,7 @@ import Fab from '@material-ui/core/Fab';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import MenuItem from '@material-ui/core/MenuItem';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import Title from './Title';
 import { TextField, Typography } from '@material-ui/core';
 
@@ -112,14 +113,23 @@ const useStyles = makeStyles((theme) => ({
   menu: {
     width:"100%",
     marginBottom:"10px",
+    marginTop:"10px"
+  },
+  modalWrapPpl: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent:"center",
+    alignItems: 'center',
+    width:"100%"
   }
 
 }));
 
 export default function Dashboard() {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const classes = useStyles()
+  const [open, setOpen] = React.useState(false)
   const [openEdit, setOpenEdit] = React.useState(false)
+  const [openPpl, setOpenPpl] = React.useState(false);
   const [bloodtype,setBloodtype] = React.useState('O+')
   const [importance,setImportance] = React.useState('High')
   const [bloodtypeEdit,setBloodtypeEdit] = React.useState('O+')
@@ -140,6 +150,15 @@ export default function Dashboard() {
   const handleCloseEdit = () => {
     setOpenEdit(false)
   };
+
+  const handleOpenPpl = () => {
+    setOpenPpl(true);
+  };
+
+  const handleClosePpl = () => {
+    setOpenPpl(false)
+  };
+
 
   const handleChange = (event) => {
     setBloodtype(event.target.value);
@@ -195,7 +214,7 @@ export default function Dashboard() {
           </TextField>
       </form>
       <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+        Select the bloodtype and the importance of the donation you want to create
       </p>
     </div>
   );
@@ -238,15 +257,41 @@ export default function Dashboard() {
           </TextField>
       </form>
       <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+        Edit the bloodtype and the importance of the donation you want to create
       </p>
+    </div>
+  );
+
+  const bodyPpl = (
+    <div>
+      <Typography color="primary">Interested Donors</Typography>
+      <Table className={classes.table} size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>Donation ID</TableCell>
+            <TableCell>BloodType</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>City</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell>{row.date}</TableCell>
+              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.shipTo}</TableCell>
+              <TableCell>{row.name}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 
   return (
     <React.Fragment>
       <div className={classes.wrap}>
-      <Title>Recent Orders</Title>
+      <Title>Recent Donations</Title>
       <Button onClick={handleOpen} variant="contained" size="medium" color="secondary">Add Donation  <Fab size="small" color="primary" aria-label="add" className={classes.margin}>
         <AddIcon />
         </Fab>
@@ -271,7 +316,7 @@ export default function Dashboard() {
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.shipTo}</TableCell>
               <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
+              <TableCell align="right"><Button onClick={handleOpenPpl} variant="outlined" color="secondary"><VisibilityIcon></VisibilityIcon></Button></TableCell>
               <TableCell><Button onClick={handleOpenEdit} variant="outlined" color="secondary"><EditIcon></EditIcon></Button></TableCell>
 
             </TableRow>
@@ -280,7 +325,7 @@ export default function Dashboard() {
       </Table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
-          See more orders
+          See more donations
         </Link>
       </div>
       </div>
@@ -322,6 +367,24 @@ export default function Dashboard() {
             </Button>
             <Button onClick={handleCloseEdit} color="primary">
               Confirm change
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+
+      <div className={classes.modalWrapPpl}>
+        <Dialog
+          open={openPpl}
+          onClose={handleClosePpl}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <DialogContent>
+            {bodyPpl}
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClosePpl} color="primary">
+              Close
             </Button>
           </DialogActions>
         </Dialog>
