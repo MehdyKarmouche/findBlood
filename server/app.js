@@ -5,8 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var dotenv = require("dotenv").config();
-
-
+var cors = require('cors');
 var centersRouter = require('./routes/api/centers');
 var donorRouter = require('./routes/api/donor');
 var signUpRouter = require('./routes/api/signUp');
@@ -27,7 +26,7 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch(err => console.log(err));
 
 var app = express();
-
+app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
