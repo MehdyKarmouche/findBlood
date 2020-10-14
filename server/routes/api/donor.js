@@ -15,9 +15,9 @@ var transporter = nodemailer.createTransport({
     }
   });
 
-router.get('/donations', verifyDonor, function(req,res,next){
+router.get('/donations', /*verifyDonor ,*/ function(req,res,next){
     Donation.find({isCompleted:false}).then(donations=>{
-        res.send({donations});
+        res.send(donations);
     })
 });
 //change blood type
