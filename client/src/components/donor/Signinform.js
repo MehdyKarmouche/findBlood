@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -37,6 +37,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Signinform() {
   const classes = useStyles();
+  const [user,setUser] = useState({
+    email:"",
+    password:""
+  })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:4000/login/donor', {
+      method: 'POST',
+      body: JSON.stringify({ user }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(res => res.json())
+      .then(json => setUser(json.user))
+  }
 
   return (
     
@@ -49,7 +64,7 @@ export default function Signinform() {
         <Typography component="h1" variant="h5">
           Sign in for Donors
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleSubmit} className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -60,6 +75,7 @@ export default function Signinform() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={e => setUser({...user,email:e.target.value})}
           />
           <TextField
             variant="outlined"
@@ -71,6 +87,7 @@ export default function Signinform() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={e => setUser({...user,password:e.target.value})}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

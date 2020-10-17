@@ -45,9 +45,11 @@ router.post('/donor',[
   // username must be an email
   check('email').isEmail().withMessage('E-mail invalide')
 ], function(req, res, next){
-  Donor.findOne({email:req.body.email.toLowerCase()}).then(donor =>{
+  console.log(req.body)
+  Donor.findOne({email:req.body.user.email.toLowerCase()}).then(donor =>{
       if(donor){
-          bcrypt.compare(req.body.password, donor.password, (err, isMatch)=>{
+
+          bcrypt.compare(req.body.user.password, donor.password, (err, isMatch)=>{
               if(err){
                 res.send(err);
               }
@@ -63,12 +65,14 @@ router.post('/donor',[
                     return res.redirect('/donor/donations')
                   }
                   else{
+                    console.log("crid not correct")
                     return res.status(403).json("incorrect password or email");
                   }
               }
           });
       }
       else{
+        console.log("does not exsist")
         return res.status(403).json("this user does not exist");
       }
   })
