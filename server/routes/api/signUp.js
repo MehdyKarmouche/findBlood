@@ -74,8 +74,8 @@ router.post('/center',[
 router.post('/donor',[
     check('email').isEmail()
 ],function(req,res,next){
-    let { email, password, password2, city, bloodType, } = req.body;
-    
+    let { email, password, password2, city, bloodType, } = req.body.user;
+    console.log(req.body);
     email = email.toLowerCase();
     let errors = [];
     if ( !email || !password || !password2 || !city) {

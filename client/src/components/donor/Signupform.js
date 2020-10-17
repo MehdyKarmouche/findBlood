@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, }  from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -33,7 +33,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUpForm() {
-  const classes = useStyles();
+  const classes = useStyles()
+  const [user,setUser] = useState({
+    email:"",
+    password:"",
+    password2:"",
+    city:"",
+    bloodType:""
+  })
+
+  
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:4000/signUp/donor', {
+      method: 'POST',
+      body: JSON.stringify({ user }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(res => res.json())
+      .then(json => setUser(json.user))
+  }
 
   return (
     
@@ -46,7 +66,7 @@ export default function SignUpForm() {
         <Typography component="h1" variant="h5">
           Sign up for Donors
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleSubmit}   className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -55,8 +75,9 @@ export default function SignUpForm() {
                 fullWidth
                 id="email"
                 label="Email Address"
-                name="email"
+                name="email[email]"
                 autoComplete="email"
+                onChange={e => setUser({ ...user, email: e.target.value })}
               />
             </Grid>
             <Grid item xs={12}>
@@ -64,11 +85,12 @@ export default function SignUpForm() {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
+                name="password[password]"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={e => setUser({ ...user, password: e.target.value })}
               />
             </Grid>
             <Grid item xs={12}>
@@ -76,23 +98,25 @@ export default function SignUpForm() {
                 variant="outlined"
                 required
                 fullWidth
-                name="password2"
+                name="password2[password2]"
                 label="Re-type password"
                 type="password"
                 id="password2"
                 autoComplete="current-password"
+                onChange={e => setUser({ ...user, password2: e.target.value })}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="current-city"
-                name="city"
+                name="city[city]"
                 variant="outlined"
                 required
                 fullWidth
                 id="city"
                 label="City"
                 autoFocus
+                onChange={e => setUser({ ...user, city: e.target.value })}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -100,10 +124,11 @@ export default function SignUpForm() {
                 variant="outlined"
                 required
                 fullWidth
-                id="bloodtype"
+                id="bloodType"
                 label="Blood type"
-                name="bloodtype"
+                name="bloodType[bloodType]"
                 autoComplete="bloodtype"
+                onChange={e => setUser({ ...user, bloodType: e.target.value })}
               />
             </Grid>
           </Grid>
