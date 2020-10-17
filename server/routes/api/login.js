@@ -10,9 +10,10 @@ router.post('/center',[
     // username must be an email
     check('email').isEmail().withMessage('E-mail invalide')
   ], function(req, res, next){
-    Center.findOne({email:req.body.email.toLowerCase()}).then(center =>{
+    console.log(req.body)
+    Center.findOne({email:req.body.user.email.toLowerCase()}).then(center =>{
         if(center){
-            bcrypt.compare(req.body.password, center.password, (err, isMatch)=>{
+            bcrypt.compare(req.body.user.password, center.password, (err, isMatch)=>{
                 if(err){
                   res.send(err);
                 }
