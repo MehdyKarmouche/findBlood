@@ -8,12 +8,10 @@ const bcrypt = require('bcryptjs');
 router.post('/center',[
     check('email').isEmail()
 ],function(req,res,next){
-    let { email, password, password2, city, district, street, zipcode, phone } = req.body;
+    let { email, password, password2, city, district, street, zipcode, phone } = req.body.user;
     
     email = email.toLowerCase();
-    console.log(email);
-    console.log(city);
-    console.log(street)
+    console.log(req.body)
     let errors = [];
     if ( !email || !password || !password2 || !city || !district || !street || !zipcode || !phone) {
         errors.push({ msg: 'Please enter all fields' });

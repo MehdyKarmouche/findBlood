@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -35,7 +35,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUpForm() {
   const classes = useStyles();
+  const [user,setUser] = useState({
+    email:"",
+    password:"",
+    password2:"",
+    phone:"",
+    city:"",
+    district:"",
+    street:"",
+    zipcode:""
+  })
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:4000/signUp/center', {
+      method: 'POST',
+      body: JSON.stringify({ user }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(res => res.json())
+      .then(json => setUser(json.user))
+  }
   return (
     
     <Container component="main" maxWidth="xs">
@@ -47,7 +67,7 @@ export default function SignUpForm() {
         <Typography component="h1" variant="h5">
           Sign up for Centers
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleSubmit} className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -58,6 +78,7 @@ export default function SignUpForm() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={e => setUser({...user,email:e.target.value})}
               />
             </Grid>
             <Grid item xs={12}>
@@ -70,6 +91,7 @@ export default function SignUpForm() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={e => setUser({...user,password:e.target.value})}
               />
             </Grid>
             <Grid item xs={12}>
@@ -82,6 +104,7 @@ export default function SignUpForm() {
                 type="password"
                 id="password2"
                 autoComplete="current-password"
+                onChange={e => setUser({...user,password2:e.target.value})}
               />
             </Grid>
             <Grid item xs={12}>
@@ -94,6 +117,7 @@ export default function SignUpForm() {
                 type="text"
                 id="phone"
                 autoComplete="cuurent-phone"
+                onChange={e => setUser({...user,phone:e.target.value})}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -106,6 +130,7 @@ export default function SignUpForm() {
                 id="city"
                 label="City"
                 autoFocus
+                onChange={e => setUser({...user,city:e.target.value})}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -117,6 +142,7 @@ export default function SignUpForm() {
                 label="District"
                 name="district"
                 autoComplete="district"
+                onChange={e => setUser({...user,district:e.target.value})}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -128,6 +154,7 @@ export default function SignUpForm() {
                 label="Street"
                 name="street"
                 autoComplete="current-street"
+                onChange={e => setUser({...user,street:e.target.value})}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -139,6 +166,7 @@ export default function SignUpForm() {
                 label="Zipcode"
                 name="zipcode"
                 autoComplete="current-zipcode"
+                onChange={e => setUser({...user,zipcode:e.target.value})}
               />
             </Grid>
           </Grid>
