@@ -26,7 +26,8 @@ router.post('/center',[
                       //console.log(token)
                       console.log("logged in")
                       //console.log(res);
-                      return res.redirect('/centers/donations')
+                      
+                      return res.status(200).json("you can redirect")
                     }
                     else{
                       return res.status(403).json("incorrect password or email");

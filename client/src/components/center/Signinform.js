@@ -49,8 +49,9 @@ export default function Signinform() {
       body: JSON.stringify({ user }),
       headers: { 'Content-Type': 'application/json' },
     })
-      .then(res => res.json())
-      .then(json => setUser(json.user))
+      .then(res => console.log(res))
+      
+      
   }
 
   return (
