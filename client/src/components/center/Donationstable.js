@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -127,13 +127,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles()
-  const [open, setOpen] = React.useState(false)
-  const [openEdit, setOpenEdit] = React.useState(false)
-  const [openPpl, setOpenPpl] = React.useState(false);
-  const [bloodtype,setBloodtype] = React.useState('O+')
-  const [importance,setImportance] = React.useState('High')
-  const [bloodtypeEdit,setBloodtypeEdit] = React.useState('O+')
-  const [importanceEdit,setImportanceEdit] = React.useState('High')
+  const [open, setOpen] = useState(false)
+  const [openEdit, setOpenEdit] = useState(false)
+  const [openPpl, setOpenPpl] = useState(false);
+  const [bloodtype,setBloodtype] = useState('O+')
+  const [importance,setImportance] = useState('High')
+  const [bloodtypeEdit,setBloodtypeEdit] = useState('O+')
+  const [importanceEdit,setImportanceEdit] = useState('High')
+  const [donations, setDonations] = useState([])
+  const [donation, setDonation] = useState({
+    bloodType:"",
+    importance:""
+  })
 
   const handleOpen = () => {
     setOpen(true);
@@ -160,23 +165,59 @@ export default function Dashboard() {
   };
 
 
-  const handleChange = (event) => {
+  const handleChangeBlood = (event) => {
     setBloodtype(event.target.value);
+    setDonation({...donation, bloodType:event.target.value})
+
   };
 
   const handleChangeImp = (event) => {
     setImportance(event.target.value);
+    setDonation({...donation, importance:event.target.value})
   };
 
-  const handleChangeEdit = (event) => {
+  const handleChangeEditBlood = (event) => {
     setBloodtypeEdit(event.target.value);
+    setDonation({...donation, bloodType:event.target.value})
   };
 
-  const handleChangeImpEdit = (event) => {
+  const handleChangeImpEditImp = (event) => {
     setImportanceEdit(event.target.value);
+    setDonation({...donation, importance:event.target.value})
   };
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    fetch('http://localhost:4000/centers/donation', {
+      method: 'POST',
+      body: JSON.stringify({ donation }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(res => console.log(res))
+  }
+
+  const handleSubmitEdit = e => {
+    e.preventDefault()
+    fetch('http://localhost:4000/centers/donation', {
+      method: 'PUT',
+      body: JSON.stringify({ donation }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(res => console.log(res))
+  }
+
+  async function fetchData(){
+    const res = await fetch("http://localhost:4000/centers/donations")
+    res
+      .json()
+      .then(res => setDonations(res));
+      console.log(res.body);
+  }
+  useEffect(() => {
+    fetchData();
+  },[]);
   const body = (
-    <div className={classes.body}>
+    <div onSubmit={handleSubmit} className={classes.body}>
       <Typography color="primary">Add donation</Typography>
       <form noValidate>
       <TextField
@@ -184,12 +225,13 @@ export default function Dashboard() {
            select
            label="Select blood type"
            value={bloodtype}
-           onChange={handleChange}
+           name="bloodType"
+           onChange={handleChangeBlood}
            variant="outlined"
            required
           >
             {bloodtypes.map((option) => (
-            <MenuItem key={option.id} value={option.id}>
+            <MenuItem key={option.id} value={option.bloodtype}>
               {option.bloodtype}
             </MenuItem>
           ))}
@@ -198,6 +240,7 @@ export default function Dashboard() {
             className={classes.menu}
             select
             label="Select importance"
+            name="importance"
             value={importance}
             onChange={handleChangeImp}
             helperText="Please select the Importance"
@@ -206,7 +249,7 @@ export default function Dashboard() {
             
           >
             {importances.map((option) => (
-            <MenuItem key={option.id} value={option.id}>
+            <MenuItem key={option.id} value={option.importance}>
               {option.importance}
             </MenuItem>
           ))}
@@ -227,13 +270,14 @@ export default function Dashboard() {
             className={classes.menu}
             select
             label="Select blood type"
+            name="bloodType"
             value={bloodtypeEdit}
-            onChange={handleChangeEdit}
+            onChange={handleChangeEditBlood}
             variant="outlined"
             required
           >
             {bloodtypes.map((option) => (
-            <MenuItem key={option.id} value={option.id}>
+            <MenuItem key={option.id} value={option.bloodtype}>
               {option.bloodtype}
             </MenuItem>
           ))}
@@ -242,15 +286,16 @@ export default function Dashboard() {
              className={classes.menu}
              select
              label="Select importance"
+             name="importance"
              value={importanceEdit}
-             onChange={handleChangeImpEdit}
+             onChange={handleChangeImpEditImp}
              helperText="Please select the Importance"
              variant="outlined"
              required
             
           >
             {importances.map((option) => (
-            <MenuItem key={option.id} value={option.id}>
+            <MenuItem key={option.id} value={option.importance}>
               {option.importance}
             </MenuItem>
           ))}
@@ -310,12 +355,12 @@ export default function Dashboard() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
+          {donations.map((donation) => (
+            <TableRow key={donation._id}>
+              <TableCell>{donation._id}</TableCell>
+              <TableCell>{donation.bloodType}</TableCell>
+              <TableCell>{donation.importance}</TableCell>
+              <TableCell>{donation.postedAt}</TableCell>
               <TableCell align="right"><Button onClick={handleOpenPpl} variant="outlined" color="secondary"><VisibilityIcon></VisibilityIcon></Button></TableCell>
               <TableCell><Button onClick={handleOpenEdit} variant="outlined" color="secondary"><EditIcon></EditIcon></Button></TableCell>
 
@@ -343,7 +388,7 @@ export default function Dashboard() {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={handleClose} color="primary">
+            <Button type="submit" onClick={handleSubmit} color="primary">
               Confirm
             </Button>
           </DialogActions>
@@ -365,7 +410,7 @@ export default function Dashboard() {
             <Button onClick={handleCloseEdit} color="primary">
               Cancel
             </Button>
-            <Button onClick={handleCloseEdit} color="primary">
+            <Button type="Submit" onClick={handleSubmitEdit} color="primary">
               Confirm change
             </Button>
           </DialogActions>

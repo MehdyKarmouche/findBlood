@@ -15,18 +15,21 @@ var transporter = nodemailer.createTransport({
   });
 
 //see all open donations
-router.get('/donations', verifyCenter, function(req,res,next){
-    const centerId = req.payload._id;
-
-    Donation.find({isCompleted : false, owner: centerId}).then(donations =>{
-        res.send({donations});
+router.get('/donations', /*verifyCenter,*/ function(req,res,next){
+    //const centerId = req.payload._id;
+    
+    Donation.find({isCompleted : false/*, owner: centerId*/}).then(donations =>{
+        res.send(donations);
+        console.log(donations)
     })
 })
 //add donation
-router.post('/donation', verifyCenter, function(req, res, next){
-    const bloodType = req.body.bloodType;
-    const importance = req.body.importance;
-    const centerId = req.payload._id;
+router.post('/donation', /*verifyCenter,*/ function(req, res, next){
+    const bloodType = req.body.donation.bloodType;
+    const importance = req.body.donation.importance;
+    //const centerId = req.payload._id;
+    console.log(req.body.donation)
+    const centerId = "123123"
     
     const newDonation = new Donation({
         owner:centerId,
@@ -38,6 +41,7 @@ router.post('/donation', verifyCenter, function(req, res, next){
       });
     
       newDonation.save();
+      console.log("donation added")
       res.json({newDonation});
       res.end();
 
@@ -52,11 +56,12 @@ router.delete('/donation',verifyCenter, function(req, res, next){
     });
 })
 //update a donation
-router.put('/donation', verifyCenter, function(req,res,next){
-    const donationId = req.body.id;
-    const bloodType = req.body.bloodType;
-    const importance = req.body.importance;
-    const centerId = req.payload._id;
+router.put('/donation', /*verifyCenter,*/ function(req,res,next){
+    const donationId = req.body.donation.id;
+    const bloodType = req.body.donation.bloodType;
+    const importance = req.body.donation.importance;
+    //const centerId = req.payload._id;
+    console.log(req.body.donation)
 
     Donation.findByIdAndUpdate({_id : donationId, owner: centerId}, {isCompleted:false, bloodType:bloodType, importance:importance, completedAt: new Date()})
     .then(donation =>{
