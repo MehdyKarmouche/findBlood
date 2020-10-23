@@ -63,7 +63,7 @@ router.put('/donation', /*verifyCenter,*/ function(req,res,next){
     //const centerId = req.payload._id;
     console.log(req.body.donation)
 
-    Donation.findByIdAndUpdate({_id : donationId, owner: centerId}, {isCompleted:false, bloodType:bloodType, importance:importance, completedAt: new Date()})
+    Donation.findByIdAndUpdate({_id : donationId/*, owner: centerId*/}, {isCompleted:false, bloodType:bloodType, importance:importance, completedAt: new Date()})
     .then(donation =>{
         res.json({donation});
     });

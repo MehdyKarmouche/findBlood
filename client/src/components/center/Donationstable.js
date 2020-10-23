@@ -136,6 +136,7 @@ export default function Dashboard() {
   const [importanceEdit,setImportanceEdit] = useState('High')
   const [donations, setDonations] = useState([])
   const [donation, setDonation] = useState({
+    id:"",
     bloodType:"",
     importance:""
   })
@@ -148,8 +149,10 @@ export default function Dashboard() {
     setOpen(false);
   };
 
-  const handleOpenEdit = () => {
+  const handleOpenEdit = (clickedId) => {
     setOpenEdit(true);
+    setDonation({...donation,id:clickedId})
+    console.log(clickedId);
   };
 
   const handleCloseEdit = () => {
@@ -202,8 +205,7 @@ export default function Dashboard() {
       method: 'PUT',
       body: JSON.stringify({ donation }),
       headers: { 'Content-Type': 'application/json' },
-    })
-      .then(res => console.log(res))
+    }).then(res => console.log(res))
   }
 
   async function fetchData(){
@@ -356,13 +358,13 @@ export default function Dashboard() {
         </TableHead>
         <TableBody>
           {donations.map((donation) => (
-            <TableRow key={donation._id}>
+            <TableRow key={donation._id} id={donation._id}>
               <TableCell>{donation._id}</TableCell>
               <TableCell>{donation.bloodType}</TableCell>
               <TableCell>{donation.importance}</TableCell>
               <TableCell>{donation.postedAt}</TableCell>
               <TableCell align="right"><Button onClick={handleOpenPpl} variant="outlined" color="secondary"><VisibilityIcon></VisibilityIcon></Button></TableCell>
-              <TableCell><Button onClick={handleOpenEdit} variant="outlined" color="secondary"><EditIcon></EditIcon></Button></TableCell>
+              <TableCell><Button onClick={() => handleOpenEdit(donation._id)} variant="outlined" color="secondary"><EditIcon></EditIcon></Button></TableCell>
 
             </TableRow>
           ))}
