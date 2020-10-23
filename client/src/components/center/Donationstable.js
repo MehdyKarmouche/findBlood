@@ -213,7 +213,7 @@ export default function Dashboard() {
     res
       .json()
       .then(res => setDonations(res));
-      console.log(res.body);
+      
   }
   useEffect(() => {
     fetchData();
@@ -315,19 +315,18 @@ export default function Dashboard() {
       <Table className={classes.table} size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Donation ID</TableCell>
-            <TableCell>BloodType</TableCell>
             <TableCell>Email</TableCell>
+            <TableCell>Phone</TableCell>
+            
             <TableCell>City</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.name}</TableCell>
+          {donations.map((donation) => (
+            <TableRow key={donation.id}>
+              <TableCell>{donation. peopleInterested}</TableCell>
+              <TableCell>{donation. peopleInterested}</TableCell>
+              <TableCell>{donation. peopleInterested}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -363,7 +362,7 @@ export default function Dashboard() {
               <TableCell>{donation.bloodType}</TableCell>
               <TableCell>{donation.importance}</TableCell>
               <TableCell>{donation.postedAt}</TableCell>
-              <TableCell align="right"><Button onClick={handleOpenPpl} variant="outlined" color="secondary"><VisibilityIcon></VisibilityIcon></Button></TableCell>
+              <TableCell align="right"><Button onClick={() => handleOpenPpl(donation._id)} variant="outlined" color="secondary"><VisibilityIcon></VisibilityIcon></Button></TableCell>
               <TableCell><Button onClick={() => handleOpenEdit(donation._id)} variant="outlined" color="secondary"><EditIcon></EditIcon></Button></TableCell>
 
             </TableRow>
