@@ -8,10 +8,10 @@ var nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
 
 var transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: process.env.SERVICE,
     auth: {
-      user: 'findbloodorg@gmail.com',
-      pass: 'findblood123!'
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD
     }
   });
 
@@ -55,7 +55,7 @@ router.post('/interested',verifyDonor, function(req, res, next){
 
 
 router.post('/forgots',function(req, res, next){
-    const email = req.body.email;
+    const email = req.body.user.email;
     //
     Donor.findOne({email:email}).then(donor=>{
         if(!donor){

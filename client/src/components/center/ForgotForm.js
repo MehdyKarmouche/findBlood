@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState}  from 'react'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -36,6 +36,20 @@ const useStyles = makeStyles((theme) => ({
 
 function Forgot(){
     const classes = useStyles();
+    const [user,setUser] = useState({
+      email:"",
+    })
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      fetch('http://localhost:4000/centers/forgots', {
+        method: 'POST',
+        body: JSON.stringify({ user }),
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then(res => console.log(res))
+        
+        
+    }
     return(
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -49,7 +63,7 @@ function Forgot(){
                     <Typography component="h1" variant="h6">
                      We can reset it via email
                     </Typography>
-                    <form className={classes.form} noValidate>
+                    <form onSubmit={handleSubmit} className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -60,6 +74,7 @@ function Forgot(){
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        onChange={e => setUser({...user,email:e.target.value})}
                     />
                     <Button
                         type="submit"
