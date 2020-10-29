@@ -47,9 +47,11 @@ export default function Signinform() {
     fetch('http://localhost:4000/login/center', {
       method: 'POST',
       body: JSON.stringify({ user }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json'  },
     })
-      .then(res => console.log(res))
+      .then(res =>{res.json().then((result)=>{
+        console.log(result.token)
+      })})
       
       
   }

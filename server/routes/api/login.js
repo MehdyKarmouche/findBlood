@@ -22,12 +22,21 @@ router.post('/center',[
                       console.log("password match !");
                       
                       const token = jwt.sign({_id : center._id, role:"center", email: center.email}, process.env.TOKEN_CENTER);
-                      res.cookie('jwtToken', token, { maxAge: 900000, httpOnly: false });
-                      //console.log(token)
-                      console.log("logged in")
+                      console.log({token})
+                      //res.cookie("jwtToken", {token}, { maxAge: 900000, httpOnly: false});
+                      res.header('token', token, { maxAge: 900000, httpOnly: false}).json({token});
                       //console.log(res);
                       
-                      return res.status(200).json("you can redirect")
+                      
+                      //return res.status(200).json("you can redirect")
+                      /*
+                      app.get('/jwt', (req, res) => {
+                        res.json({
+                          token: jsonwebtoken.sign({ user: 'johndoe' }, jwtSecret)
+                        });
+                      });
+                      */
+
                     }
                     else{
                       return res.status(403).json("incorrect password or email");
