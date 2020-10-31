@@ -323,7 +323,7 @@ export default function Dashboard() {
         </TableHead>
         <TableBody>
           {donations.map((donation) => (
-            <TableRow key={donation.id}>
+            <TableRow key={donation._id} id={donation._id}>
               <TableCell>{donation. peopleInterested}</TableCell>
               <TableCell>{donation. peopleInterested}</TableCell>
               <TableCell>{donation. peopleInterested}</TableCell>

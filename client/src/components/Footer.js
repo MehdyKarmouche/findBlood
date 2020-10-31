@@ -16,7 +16,7 @@ function Footer() {
         <Box mt={5} className={classes.footer}>
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
+        <Link to="/" color="inherit" href="https://material-ui.com/">
           www.Findblood.com
         </Link>{' '}
         {new Date().getFullYear()}
