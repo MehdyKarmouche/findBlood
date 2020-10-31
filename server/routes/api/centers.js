@@ -17,6 +17,7 @@ var transporter = nodemailer.createTransport({
 //see all open donations
 router.get('/donations', /*verifyCenter,*/ function(req,res,next){
     //const centerId = req.payload._id;
+    console.log("ID: ")
     
     Donation.find({isCompleted : false/*, owner: centerId*/}).then(donations =>{
         res.send(donations);
@@ -29,10 +30,10 @@ router.post('/donation', /*verifyCenter,*/ function(req, res, next){
     const importance = req.body.donation.importance;
     //const centerId = req.payload._id;
     console.log(req.body.donation)
-    const centerId = "123123"
+    const centerId = "5f53cf1f3e0f4c4bb03f45fe"
     
     const newDonation = new Donation({
-        owner:centerId,
+        //owner:centerId,
         bloodType,
         importance,
         postedAt: new Date(),

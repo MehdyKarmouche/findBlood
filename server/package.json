@@ -8,6 +8,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -15,8 +16,10 @@
     "http-errors": "~1.6.3",
     "jade": "^1.11.0",
     "jsonwebtoken": "^8.5.1",
+    "kill-port": "^1.6.1",
     "mongoose": "^5.10.0",
     "morgan": "~1.9.1",
-    "nodemailer": "^6.4.11"
+    "nodemailer": "^6.4.11",
+    "nodemon": "^2.0.5"
   }
 }

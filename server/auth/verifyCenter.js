@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = function auth(req, res, next) {
     // Get auth header value
+    console.log("test")
     const bearerHeader = req.cookies.jwtToken || req.headers.Authorization;
     console.log(bearerHeader);
 
@@ -16,6 +17,8 @@ module.exports = function auth(req, res, next) {
       const bearerToken = bearer[1];
       // Set the token
       req.token = bearerToken;
+      console.log("payload")
+      console.log(decoded)
       req.payload = decoded;
       // Next middleware
       if(req.payload.role == 'center')
