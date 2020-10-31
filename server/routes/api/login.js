@@ -51,7 +51,7 @@ router.post('/center',[
 
 // login for donors
 router.post('/donor',[
-  // username must be an email
+ 
   check('email').isEmail().withMessage('E-mail invalide')
 ], function(req, res, next){
   console.log(req.body)
@@ -64,17 +64,12 @@ router.post('/donor',[
               }
               else{
                   if(isMatch){
-                    console.log("password match !");
+                    console.log("matched")
+                    const token = jwt.sign({_id : donor._id, role:"donor", email: donor.email}, process.env.TOKEN_Donor);
+                      res.cookie('token', token, { maxAge: 900000, httpOnly: false}).json({token});
                     
-                    const token = jwt.sign({_id : donor._id, role:"donor", email: donor.email}, process.env.TOKEN_DONOR);
-                    res.cookie('jwtToken', token, { maxAge: 900000, httpOnly: false });
-                    //console.log(token)
-                    console.log("logged in")
-                    //console.log(res);
-                    return res.redirect('/donor/donations')
                   }
                   else{
-                    console.log("crid not correct")
                     return res.status(403).json("incorrect password or email");
                   }
               }

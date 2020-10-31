@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -41,7 +41,10 @@ export default function Signinform() {
   const classes = useStyles();
   const [user,setUser] = useState({
     email:"",
-    password:""
+    password:"",
+    loggedIn:false,
+    token:'',
+    redirected:false
   })
 
   const handleSubmit = (e) => {
@@ -49,11 +52,27 @@ export default function Signinform() {
     fetch('http://localhost:4000/login/donor', {
       method: 'POST',
       body: JSON.stringify({ user }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json'  },
     })
-      .then(res => res.json())
-      .then(json => setUser(json.user))
+      .then(res =>{res.json().then((result)=>{
+        if(result.token){
+          setUser({...user,loggedIn:true,token: result.token})
+          localStorage.setItem('jwtToken', result.token)
+          
+        }
+        else
+          console.log("can't login")
+        
+        
+      })})
+      
   }
+  useEffect(() => {
+    console.log(user);
+  });
+  
+  if(user.loggedIn)
+    return <Redirect  exact from="/donor/signin" to="/donor" />
 
   return (
     
