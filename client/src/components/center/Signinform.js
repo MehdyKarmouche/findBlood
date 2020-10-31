@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {BrowserRouter as Router, Route, Redirect} from  'react-router-dom'
+import Dashboard from './pages/Dashboard'
 
 
 
@@ -36,11 +38,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Signinform() {
+  
+    
   const classes = useStyles();
   const [user,setUser] = useState({
     email:"",
-    password:""
+    password:"",
+    loggedIn:false,
+    token:'',
+    redirected:false
   })
+  
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -50,15 +58,34 @@ export default function Signinform() {
       headers: { 'Content-Type': 'application/json'  },
     })
       .then(res =>{res.json().then((result)=>{
-        console.log(result.token)
+        if(result.token){
+          setUser({...user,loggedIn:true,token: result.token})
+          localStorage.setItem('jwtToken', result.token)
+          
+        }
+        else
+          console.log("can't login")
+        
+        
       })})
       
-      
   }
+ 
+  
+  useEffect(() => {
+    console.log(user);
+  });
+
+  /*if(user.loggedIn)
+    return <Redirect exact to="/center/dashboard" />*/
+  if(user.loggedIn)
+    return <Redirect  exact from="/center/signin" to="/center/dashboard" />
 
   return (
     
+    
     <Container component="main" maxWidth="xs">
+      
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
