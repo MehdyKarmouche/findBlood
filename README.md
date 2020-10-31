@@ -18,8 +18,8 @@ Web application that helps blood donation agencies and centers to manage their b
   - [ ] Routing
  
 ## Few Screenshots
-![image]<img width="947" alt="Login" src="https://user-images.githubusercontent.com/46247214/97780864-96d4de80-1b87-11eb-9c21-3bfeb27dc6b1.PNG">
-![image]<img width="830" alt="Add" src="https://user-images.githubusercontent.com/46247214/97780913-faf7a280-1b87-11eb-8f70-184a88c6b51b.PNG">
+<img width="947" alt="Login" src="https://user-images.githubusercontent.com/46247214/97780864-96d4de80-1b87-11eb-9c21-3bfeb27dc6b1.PNG">
+<img width="830" alt="Add" src="https://user-images.githubusercontent.com/46247214/97780913-faf7a280-1b87-11eb-8f70-184a88c6b51b.PNG">
 
 
 
