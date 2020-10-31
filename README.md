@@ -1,13 +1,13 @@
-#FindBlood
+# FindBlood
 Web application that helps blood donation agencies and centers to manage their blood banks and reach potential donors.
-##Built with:
+## Built with:
   -ReactJs
   -MaterialUI
   -React Router
   -NodeJs
   -ExpressJs
   -MongoDB
-##Tasks:
+## Tasks:
   - [x] Database Model
   - [x] REST Api
   - [x] Email service
