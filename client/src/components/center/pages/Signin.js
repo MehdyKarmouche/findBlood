@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../../Navbar';
 import Signinform from '../Signinform';
 import Signup from './Signup';
+import DonorSignin from '../../donor/pages/Signin'
 import Dashboard from './Dashboard';
 import ForgotPassword from './ForgotPassword';
 import Home from '../../Home'
@@ -22,9 +23,10 @@ function Signin() {
         
 } />
         <Route exact path="/center/signup" component={Signup}/>
+        <Route exact path="/donor/signin" component={DonorSignin}/>
         <Route exact path="/" component={Home}/>
         <Route exact path="/center/forgot" component={ForgotPassword}/>
-        <Route exact  to="/center/dashboard" component={Dashboard} />
+        <Route exact  path ="/center/dashboard" component={Dashboard} />
         </Switch>
       </div>
     </Router>

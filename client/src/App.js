@@ -16,10 +16,10 @@ function App() {
     <Router>
       <Switch>
       
-        <Route  path="/center/signin" component={CenterSignin} />
+        <Route exact path="/center/signin" component={CenterSignin} />
         <Route exact path="/donor/signin" component={DonorSignin} />
         <Route exact path="/donor" component={Donor} />
-        <Route exact path="/" component={Home} />
+        <Route path="/" component={Home} />
       
       </Switch>
     </Router>
