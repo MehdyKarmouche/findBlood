@@ -71,7 +71,7 @@ function CallForAction() {
               Why donate?
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Right now people are in need of your donation. A simple action from you could save a life.
+              Right now, people are in need of your donation. A simple action from you could save a life.
             </Typography>
             <div className={classes.heroSelect}>
              <form className={classes.form} >

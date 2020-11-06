@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route,Switch} from  'react-router-dom'
 import Signup from './Signup';
 import ForgotPassword from './ForgotPassword'
 import Footer from '../../Footer'
+import Donor from './Donor'
 
 function Signin() {
   
@@ -27,6 +28,7 @@ function Signin() {
     <Route exact path="/center/signin" component={CenterSignin}/>
     <Route exact path="/" component={Home}/>
     <Route exact path="/donor/forgot" component={ForgotPassword}/>
+    <Route exact path="/donor" component={Donor}/>
     </Switch>
     </div>
     </Router>
