@@ -205,7 +205,7 @@ export default function Dashboard() {
       method: 'PUT',
       body: JSON.stringify({ donation }),
       headers: { 'Content-Type': 'application/json' },
-    }).then(res => console.log(res))
+    }).then(handleCloseEdit)
   }
 
   async function fetchData(){
@@ -217,7 +217,7 @@ export default function Dashboard() {
   }
   useEffect(() => {
     fetchData();
-  },[]);
+  },[handleSubmitEdit]);
   const body = (
     <div onSubmit={handleSubmit} className={classes.body}>
       <Typography color="primary">Add donation</Typography>
