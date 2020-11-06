@@ -196,7 +196,7 @@ export default function Dashboard() {
       body: JSON.stringify({ donation }),
       headers: { 'Content-Type': 'application/json' },
     })
-      .then(res => console.log(res))
+      .then(setDonation({donation})).then(handleClose)
   }
 
   const handleSubmitEdit = e => {
