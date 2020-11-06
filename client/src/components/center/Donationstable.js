@@ -152,7 +152,7 @@ export default function Dashboard() {
   const handleOpenEdit = (clickedId) => {
     setOpenEdit(true);
     setDonation({...donation,id:clickedId})
-    console.log(clickedId);
+    
   };
 
   const handleCloseEdit = () => {
@@ -205,7 +205,7 @@ export default function Dashboard() {
       method: 'PUT',
       body: JSON.stringify({ donation }),
       headers: { 'Content-Type': 'application/json' },
-    }).then(handleCloseEdit)
+    }).then(setDonation({donation})).then(handleCloseEdit)
   }
 
   async function fetchData(){
@@ -217,7 +217,7 @@ export default function Dashboard() {
   }
   useEffect(() => {
     fetchData();
-  },[handleSubmitEdit]);
+  },[donation]);
   const body = (
     <div onSubmit={handleSubmit} className={classes.body}>
       <Typography color="primary">Add donation</Typography>
