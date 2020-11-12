@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Footer() {
+const Footer = () => {
   const classes = useStyles();
     return (
         <Box mt={5} className={classes.footer}>

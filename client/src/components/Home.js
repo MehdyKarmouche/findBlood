@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import HomeContent from './HomeContent';
 import Footer from './Footer'
 
-function Home() {
+const Home = () => {
   return (
     <div className="Home">
         <Navbar/>

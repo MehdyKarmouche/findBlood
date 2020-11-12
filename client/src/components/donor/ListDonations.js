@@ -77,7 +77,7 @@ const cards = [
 
 
 
-function ListDonations(){
+const ListDonations = () => {
 
   const [donations, setDonations] = useState([]);
   async function fetchData(){

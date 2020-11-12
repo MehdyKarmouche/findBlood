@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NumberOfDonations() {
+const NumberOfDonations = () => {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -36,3 +36,4 @@ export default function NumberOfDonations() {
     </React.Fragment>
   );
 }
+export default NumberOfDonations;

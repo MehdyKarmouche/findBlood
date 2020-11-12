@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUpForm() {
+const SignUpForm = () => {
   const classes = useStyles()
   const [user,setUser] = useState({
     email:"",
@@ -153,3 +153,4 @@ export default function SignUpForm() {
     </Container>
   );
 }
+export default SignUpForm;

@@ -4,7 +4,7 @@ import CallForAction from '../CallForAction';
 import ListDonations from '../ListDonations';
 import Footer from '../../Footer'
 
-function Donor() {
+const Donor = () => {
   
     return (
       

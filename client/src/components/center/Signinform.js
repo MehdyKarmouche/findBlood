@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Signinform() {
+const Signinform = () => {
   
     
   const classes = useStyles();
@@ -149,3 +149,4 @@ export default function Signinform() {
     </Container>
   );
 }
+export default Signinform;

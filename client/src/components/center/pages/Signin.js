@@ -9,7 +9,7 @@ import Home from '../../Home'
 import Footer from '../../Footer'
 import {BrowserRouter as Router, Route,Redirect,Switch} from  'react-router-dom'
 
-function Signin() {
+const Signin = () => {
   return (
     <Router>
       <div className="Home">

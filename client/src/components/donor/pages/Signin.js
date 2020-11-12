@@ -9,7 +9,7 @@ import ForgotPassword from './ForgotPassword'
 import Footer from '../../Footer'
 import Donor from './Donor'
 
-function Signin() {
+const Signin = () => {
   
 
   return (

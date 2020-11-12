@@ -6,7 +6,7 @@ import Home from '../../Home'
 import Footer from '../../Footer'
 import {BrowserRouter as Router, Route} from  'react-router-dom'
 
-function Signup() {
+const Signup = () => {
   return (
     <Router>
     <div className="Home">

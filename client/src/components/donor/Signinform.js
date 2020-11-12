@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Signinform() {
+const Signinform = () => {
   const classes = useStyles();
   const [user,setUser] = useState({
     email:"",
@@ -139,3 +139,4 @@ export default function Signinform() {
     </Container>
   );
 }
+export default Signinform;

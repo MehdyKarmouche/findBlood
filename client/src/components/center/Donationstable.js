@@ -125,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function Dashboard() {
+const Dashboard = () => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
   const [openEdit, setOpenEdit] = useState(false)
@@ -215,6 +215,9 @@ export default function Dashboard() {
       .then(res => setDonations(res));
       
   }
+  const token = localStorage.getItem("jwtToken");
+  
+
   useEffect(() => {
     fetchData();
   },[donation]);
@@ -441,3 +444,5 @@ export default function Dashboard() {
     </React.Fragment>
   );
 }
+
+export default Dashboard;

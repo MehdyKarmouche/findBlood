@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-function Navbar() {
+const Navbar = () => {
   const classes = useStyles();
 
   return (

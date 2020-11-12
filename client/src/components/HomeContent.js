@@ -52,7 +52,7 @@ const useStyles = makeStyles(() => ({
     
   }));
 
-function HomeContent() {
+const HomeContent = () => {
 
   const classes = useStyles();
   return (

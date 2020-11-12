@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function Forgot(){
+const Forgot = () => {
     const classes = useStyles();
     const [user,setUser] = useState({
       email:"",

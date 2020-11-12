@@ -10,7 +10,7 @@ import Donor from './components/donor/pages/Donor';
 import DonorSignup from './components/donor/pages/Signup';
 import {BrowserRouter as Router, Route, Switch} from  'react-router-dom'
 
-function App() {
+const App = () => {
   return (
     
     <Router>

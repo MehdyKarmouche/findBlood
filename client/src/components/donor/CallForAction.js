@@ -55,7 +55,7 @@ const useStyles = makeStyles({
       }
   });
 
-function CallForAction() {
+const CallForAction = () => {
     const classes = useStyles();
     const [city,setCity] = React.useState();
 

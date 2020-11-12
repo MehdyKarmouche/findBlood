@@ -8,7 +8,7 @@ import Footer from '../../Footer'
 
 
 
-function Dashboard() {
+const Dashboard = () => {
   
   
   

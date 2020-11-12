@@ -7,7 +7,7 @@ import DonorSignin from '../../donor/pages/Signin'
 import Footer from '../../Footer'
 import {BrowserRouter as Router, Route} from  'react-router-dom'
 
-function ForgotPassword() {
+const ForgotPassword = () => {
     return (
       <Router>
         <div className="Home">
