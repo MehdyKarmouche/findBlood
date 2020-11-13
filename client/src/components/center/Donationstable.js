@@ -17,6 +17,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Title from './Title';
 import { TextField, Typography } from '@material-ui/core';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 const bloodtypes = [
   {
@@ -350,21 +352,25 @@ const Dashboard = () => {
       <Table className={classes.table} size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Id</TableCell>
-            <TableCell>BloodType</TableCell>
-            <TableCell>Importance</TableCell>
-            <TableCell>Posted at</TableCell>
-            <TableCell align="right">Interested ppl</TableCell>
-            <TableCell>Edit</TableCell>
+            
+            <TableCell><strong>BloodType</strong></TableCell>
+            <TableCell><strong>Importance</strong></TableCell>
+            <TableCell><strong>Posted at</strong></TableCell>
+            <TableCell><strong>Status</strong></TableCell>
+            <TableCell align="right"><strong>Interested ppl</strong></TableCell>
+            <TableCell><strong>Edit</strong></TableCell>
+            
           </TableRow>
         </TableHead>
         <TableBody>
           {donations.map((donation) => (
             <TableRow key={donation._id} id={donation._id}>
-              <TableCell>{donation._id}</TableCell>
               <TableCell>{donation.bloodType}</TableCell>
               <TableCell>{donation.importance}</TableCell>
               <TableCell>{donation.postedAt}</TableCell>
+              <TableCell>{
+                donation.isCompleted ? <CheckBoxIcon color="primary"/> : <HighlightOffIcon color="secondary"/>
+              }</TableCell>
               <TableCell align="right"><Button onClick={() => handleOpenPpl(donation._id)} variant="outlined" color="secondary"><VisibilityIcon></VisibilityIcon></Button></TableCell>
               <TableCell><Button onClick={() => handleOpenEdit(donation._id)} variant="outlined" color="secondary"><EditIcon></EditIcon></Button></TableCell>
 
