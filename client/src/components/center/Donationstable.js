@@ -21,68 +21,9 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import AddDonation from './AddDonation'
 import EditDonation from './EditDonation'
-
-const bloodtypes = [
-  {
-    bloodtype: 'A+',
-    id:1
-  },
-  {
-    bloodtype: 'A-',
-    id:2
-  },
-  {
-    bloodtype: 'O+',
-    id:3
-  },
-  {
-    bloodtype: 'O-',
-    id:4
-  },
-  {
-    bloodtype: 'B+',
-    id:5
-  },
-  {
-    bloodtype: 'B-',
-    id:6
-  },
-  {
-    bloodtype: 'AB+',
-    id:7
-  },
-  {
-    bloodtype: 'AB-',
-    id:8
-  },
-  
-];
-const importances = [
-  {
-    id:9,
-    importance:"High"
-  },
-  {
-    id:10,
-    importance:"Mid",
-  },
-  {
-    id:11,
-    importance:"Low"
-  }
-];
-
-// Statuses
-const statuses = [
-  {
-    id:12,
-    status:"Completed"
-  },
-  {
-    id:13,
-    status:"Pending"
-  },
-]
+import bloodtypes from '../bloodtypes'
+import importances from '../importances'
+import statuses from '../statuses'
 
 function preventDefault(event) {
   event.preventDefault();
@@ -92,16 +33,12 @@ const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
   },
-  paper : {
-    
-  },
   titleModal: {
     color:"primary"
   },
   wrap : {
     marginTop:"20px",
     marginLeft:"20px"
-    
   },
   margin:{
     marginLeft:"10px"
@@ -112,11 +49,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignContent:"center",
     alignItems: 'center',
-  },
-  menu: {
-    width:"100%",
-    marginBottom:"10px",
-    marginTop:"10px"
   },
   modalWrapPpl: {
     display: 'flex',
