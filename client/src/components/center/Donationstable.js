@@ -20,6 +20,7 @@ import { TextField, Typography } from '@material-ui/core';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import AddDonation from './AddDonation'
+import EditDonation from './EditDonation'
 
 const bloodtypes = [
   {
@@ -224,69 +225,6 @@ const Dashboard = () => {
     fetchData();
   },[donation]);
   
-
-  const bodyEdit = (
-    <div className={classes.body}>
-      <Typography color="primary">Edit donation</Typography>
-      <form >
-      <TextField
-            className={classes.menu}
-            select
-            label="Select blood type"
-            name="bloodType"
-            value={bloodtypeEdit}
-            onChange={handleChangeEditBlood}
-            variant="outlined"
-            required
-          >
-            {bloodtypes.map((option) => (
-            <MenuItem key={option.id} value={option.bloodtype}>
-              {option.bloodtype}
-            </MenuItem>
-          ))}
-          </TextField>
-          <TextField
-             className={classes.menu}
-             select
-             label="Select importance"
-             name="importance"
-             value={importanceEdit}
-             onChange={handleChangeImpEditImp}
-             helperText="Please select the Importance"
-             variant="outlined"
-             required
-            
-          >
-            {importances.map((option) => (
-            <MenuItem key={option.id} value={option.importance}>
-              {option.importance}
-            </MenuItem>
-          ))}
-          </TextField>
-          <TextField
-            className={classes.menu}
-            select
-            label="Set donation status"
-            name="isCompleted"
-            value={importanceEdit}
-            onChange={handleChangeImpEditImp}
-            helperText="Please set the donation status"
-            variant="outlined"
-            required
-            >
-              {statuses.map((status) => (
-            <MenuItem key={status.id} value={status.status}>
-              {status.status}
-            </MenuItem>
-          ))}
-          </TextField>
-      </form>
-      <p id="simple-modal-description">
-        Edit the bloodtype and the importance of the donation you want to create
-      </p>
-    </div>
-  );
-
   const bodyPpl = (
     <div>
       <Typography color="primary">Interested Donors</Typography>
@@ -388,7 +326,12 @@ const Dashboard = () => {
           aria-describedby="simple-modal-description"
         >
           <DialogContent>
-            {bodyEdit}
+            <EditDonation donation={donation}
+             handleChangeEditBlood={handleChangeEditBlood}
+             handleChangeImpEditImp={handleChangeImpEditImp}
+             bloodtypes={bloodtypes}
+             importances={importances}
+             />
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseEdit} color="primary">
