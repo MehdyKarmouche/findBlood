@@ -95,7 +95,13 @@ const Dashboard = () => {
     
   };
 
+ 
+
   const handleCloseEdit = () => {
+    setOpenEdit(false)
+  };
+
+  const handleCloseEditDel = () => {
     setOpenEdit(false)
   };
 
@@ -152,9 +158,17 @@ const Dashboard = () => {
       .then(setDonation({donation})).then(handleClose)
   }
 
+  const handleDelete = e => {
+    e.preventDefault()
+    fetch('http://localhost:4000/centers/donation', {
+      method: 'DELETE',
+      body: JSON.stringify({ donation }),
+      headers: { 'Content-Type': 'application/json' },
+    }).then(setDonation({donation})).then(handleCloseEdit)
+  }
+
   const handleSubmitEdit = e => {
-    console.log("donation sent as put")
-    console.log(donation)
+    
     e.preventDefault()
     fetch('http://localhost:4000/centers/donation', {
       method: 'PUT',
@@ -279,6 +293,7 @@ const Dashboard = () => {
         >
           <DialogContent>
             <EditDonation donation={donation}
+            
             statuses = {statuses}
              handleChangeEditBlood={handleChangeEditBlood}
              handleChangeStatus={handleChangeStatus}
@@ -288,9 +303,10 @@ const Dashboard = () => {
              />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleCloseEdit} color="primary">
-              Cancel
+            <Button onClick={handleDelete} color="secondary">
+              Delete Donation
             </Button>
+            
             <Button type="Submit" onClick={handleSubmitEdit} color="primary">
               Confirm change
             </Button>
