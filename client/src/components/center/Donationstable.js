@@ -65,15 +65,20 @@ const Dashboard = () => {
   const [open, setOpen] = useState(false)
   const [openEdit, setOpenEdit] = useState(false)
   const [openPpl, setOpenPpl] = useState(false);
+
   const [bloodtype,setBloodtype] = useState('O+')
   const [importance,setImportance] = useState('High')
+
   const [bloodtypeEdit,setBloodtypeEdit] = useState('O+')
   const [importanceEdit,setImportanceEdit] = useState('High')
+  
+  const [status,setStatus] = useState(false)
   const [donations, setDonations] = useState([])
   const [donation, setDonation] = useState({
     id:"",
     bloodType:"",
-    importance:""
+    importance:"",
+    isCompleted:Boolean
   })
 
   const handleOpen = () => {
@@ -124,6 +129,19 @@ const Dashboard = () => {
     setDonation({...donation, importance:event.target.value})
   };
 
+  const handleChangeStatus = (event) => {
+    setStatus(event.target.value)
+    console.log("TARGET:")
+    console.log(typeof event.target.value)
+    if(event.target.value === 'Completed'){
+      console.log("wa rah completed")
+      setDonation({...donation, isCompleted:true})
+    }
+    else
+      setDonation({...donation, isCompleted:false})
+
+  }
+
   const handleSubmit = e => {
     e.preventDefault()
     fetch('http://localhost:4000/centers/donation', {
@@ -135,6 +153,8 @@ const Dashboard = () => {
   }
 
   const handleSubmitEdit = e => {
+    console.log("donation sent as put")
+    console.log(donation)
     e.preventDefault()
     fetch('http://localhost:4000/centers/donation', {
       method: 'PUT',
@@ -259,7 +279,9 @@ const Dashboard = () => {
         >
           <DialogContent>
             <EditDonation donation={donation}
+            statuses = {statuses}
              handleChangeEditBlood={handleChangeEditBlood}
+             handleChangeStatus={handleChangeStatus}
              handleChangeImpEditImp={handleChangeImpEditImp}
              bloodtypes={bloodtypes}
              importances={importances}

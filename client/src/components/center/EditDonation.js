@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const EditDonation = ({donation,handleChangeEditBlood, handleChangeImpEditImp, bloodtypes, importances }) => {
+const EditDonation = ({donation,handleChangeEditBlood, handleChangeStatus,  handleChangeImpEditImp, bloodtypes, importances, statuses }) => {
 
     const classes = useStyles()
     return (
@@ -54,6 +54,23 @@ const EditDonation = ({donation,handleChangeEditBlood, handleChangeImpEditImp, b
               {option.importance}
             </MenuItem>
           ))}
+          </TextField>
+          <TextField
+          className={classes.menu}
+          select
+          label="Select status"
+          name="status"
+          value={statuses.status}
+          onChange={handleChangeStatus}
+          variant="outlined"
+          required
+          >
+              {statuses.map((option) => (
+            <MenuItem key={option.id} value={option.status}>
+              {option.status}
+            </MenuItem>
+          ))}
+
           </TextField>
       </form>
       <p id="simple-modal-description">
