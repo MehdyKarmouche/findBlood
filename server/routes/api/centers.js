@@ -48,13 +48,13 @@ router.post('/donation', /*verifyCenter,*/ function(req, res, next){
 });
 
 //Donation is completed
-router.delete('/donation',verifyCenter, function(req, res, next){
+/*router.delete('/donation',verifyCenter, function(req, res, next){
     const donationId = req.body.id;
     const centerId = req.payload._id;
     Donation.findByIdAndUpdate({_id : donationId, owner: centerId}, {isCompleted:true, completedAt : new Date()}).then(donation =>{
         res.json({donation});
     });
-})
+})*/
 //update a donation
 router.put('/donation', /*verifyCenter,*/ function(req,res,next){
     const donationId = req.body.donation.id;
@@ -68,6 +68,19 @@ router.put('/donation', /*verifyCenter,*/ function(req,res,next){
     .then(donation =>{
         res.json({donation});
     });
+})
+
+router.delete('/donation', function(req, res, next){
+  const idToDelete = req.body.donation.id;
+  console.log(idToDelete)
+  console.log("DELETE HIT")
+
+  Donation.deleteOne({ _id: idToDelete }, function (err) {
+    if (err) return handleError(err);
+      Donation.find({}).then(donations => {
+        res.json(donations)
+      })
+  });
 })
 
 //
