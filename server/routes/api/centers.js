@@ -19,7 +19,7 @@ router.get('/donations', /*verifyCenter,*/ function(req,res,next){
     //const centerId = req.payload._id;
     console.log("ID: ")
     
-    Donation.find({isCompleted : false/*, owner: centerId*/}).then(donations =>{
+    Donation.find({/*, owner: centerId*/}).then(donations =>{
         res.send(donations);
         console.log(donations)
     })
@@ -28,8 +28,7 @@ router.get('/donations', /*verifyCenter,*/ function(req,res,next){
 router.post('/donation', /*verifyCenter,*/ function(req, res, next){
     const bloodType = req.body.donation.bloodType;
     const importance = req.body.donation.importance;
-    //const centerId = req.payload._id;
-    console.log(req.body.donation)
+    console.log("HIT")
     const centerId = "5f53cf1f3e0f4c4bb03f45fe"
     
     const newDonation = new Donation({
@@ -61,10 +60,11 @@ router.put('/donation', /*verifyCenter,*/ function(req,res,next){
     const donationId = req.body.donation.id;
     const bloodType = req.body.donation.bloodType;
     const importance = req.body.donation.importance;
+    const isCompleted = req.body.donation.isCompleted
     //const centerId = req.payload._id;
     console.log(req.body.donation)
 
-    Donation.findByIdAndUpdate({_id : donationId/*, owner: centerId*/}, {isCompleted:false, bloodType:bloodType, importance:importance, completedAt: new Date()})
+    Donation.findByIdAndUpdate({_id : donationId/*, owner: centerId*/}, {isCompleted:false, bloodType:bloodType, importance:importance,isCompleted:isCompleted, completedAt: new Date()})
     .then(donation =>{
         res.json({donation});
     });
