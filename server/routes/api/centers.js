@@ -85,6 +85,18 @@ router.delete('/donation', function(req, res, next){
   });
 })
 
+router.get('/stats/total', function(req,res,next){
+  Donation.find({}).then(donations =>{
+      res.json(donations.length);
+  })
+})
+router.get('/stats/completed', function(req,res,next){
+  Donation.find({isCompleted:true}).then(donations =>{
+    console.log(donations.length)
+      res.json(donations.length)
+  })
+})
+
 //
 router.post('/forgots',function(req, res, next){
     const email = req.body.user.email;

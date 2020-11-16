@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -24,36 +24,46 @@ const useStyles = makeStyles({
 });
 
 const NumDonations = () => {
+  const [total,setTotal] = useState()
+  const [complete,setComplete] = useState()
+  const date = new Date()
+  async function fetchTotal(){
+    const res = await fetch("http://localhost:4000/centers/stats/total")
+    res
+      .json()
+      .then(res => setTotal(res));   
+  }
+  async function fetchCompletes(){
+    const res = await fetch("http://localhost:4000/centers/stats/completed")
+    res
+      .json()
+      .then(res => setComplete(res));   
+  }
+
+  useEffect(() => {
+    fetchTotal();
+    fetchCompletes();
+  },[])
   const classes = useStyles();
   return (
     <React.Fragment>
       <Grid className={classes.root} container spacing={4}>
         <Grid item xs={6} sm={3}>
-        <Paper className={classes.paper} elevation={3}>
-      <Title>Donations</Title>
-      <Typography component="p" variant="h4">
-        100
-      </Typography>
-      <Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
-      </Typography>
-      <div>
-      </div>
+      <Paper className={classes.paper} elevation={3}>
+        <Title>Number of Donations</Title>
+        <Typography component="p" variant="h4">
+          {total}
+        </Typography>
       </Paper>
       </Grid>
       
 
       <Grid item item xs={6} sm={3}>
         <Paper className={classes.paper} elevation={3}>
-        <Title>avg donation/day</Title>
-        <Typography component="p" variant="h4">
-          5
-        </Typography>
-        <Typography color="textSecondary" className={classes.depositContext}>
-          on 15 March, 2019
-        </Typography>
-        <div>
-        </div>
+          <Title>Completed Donations</Title>
+          <Typography component="p" variant="h4">
+            {complete}
+          </Typography>
         </Paper>
       </Grid>
 
