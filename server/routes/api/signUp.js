@@ -44,7 +44,8 @@ router.post('/center',[
               password,
               address:newAddress,
               phone: phone,
-              inNeed: false
+              inNeed: false,
+              isVerified: false
 
             });
     

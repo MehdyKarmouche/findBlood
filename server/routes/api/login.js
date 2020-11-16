@@ -18,9 +18,10 @@ router.post('/center',[
                   res.send(err);
                 }
                 else{
-                    if(isMatch){
-                      console.log("password match !");
+                    if(isMatch && center.isVerified===true){
                       
+                      console.log("password match !");
+
                       const token = jwt.sign({_id : center._id, role:"center", email: center.email}, process.env.TOKEN_CENTER);
                       //res.cookie("jwtToken", {token}, { maxAge: 900000, httpOnly: false});
                       res.cookie('token', token, { maxAge: 900000, httpOnly: false}).json({token});

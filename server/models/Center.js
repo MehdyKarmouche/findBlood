@@ -13,7 +13,8 @@ const centerSchema = new Schema({
     },
     phone: {type: String, required: true},
     inNeed: {type:Boolean},
-    resetLink: {data:String, default: ""}
+    resetLink: {data:String, default: ""},
+    isVerified: {type: Boolean}
 
 });
 
