@@ -45,22 +45,6 @@ const CallForAction = () => {
               Right now, people are in need of your donation. A simple action from you could save a life.
             </Typography>
             <div className={classes.heroSelect}>
-             <form className={classes.form} >
-                <TextField
-                    className={classes.textfield}
-                    select
-                    label="Change city"
-                    value={city}
-                    onChange={handleChange}
-                    variant="outlined"
-                >
-                    {cities.map((option) => (
-                        <MenuItem key={option.id} value={option.id}>
-                        {option.city}
-                        </MenuItem>
-                    ))}
-                </TextField>
-              </form>
             </div>
           </Container>
         </div>

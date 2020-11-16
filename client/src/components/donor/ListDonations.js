@@ -8,6 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import cities from '../cities'
 const useStyles = makeStyles((theme)=>({
   icon: {
     marginRight: theme.spacing(2),
@@ -38,6 +41,11 @@ const useStyles = makeStyles((theme)=>({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  textfield: {
+    align:"center",
+    width:"50%",
+    left:"25%"
+  }
 
 }));
 
@@ -80,6 +88,13 @@ const cards = [
 const ListDonations = () => {
 
   const [donations, setDonations] = useState([]);
+  const [city,setCity] = React.useState();
+
+    const handleChange = (event) =>{
+        const selectedCity = event.target.value;
+        setCity(selectedCity)
+        
+    }
   async function fetchData(){
     const res = await fetch("http://localhost:4000/donor/donations")
     
@@ -99,10 +114,26 @@ const ListDonations = () => {
     return(
         <div>
             <Container className={classes.cardGrid} maxWidth="md">
+            <form className={classes.form} >
+                <TextField
+                    className={classes.textfield}
+                    select
+                    label="Select city"
+                    value={cities.city}
+                    onChange={handleChange}
+                    variant="outlined"
+                >
+                    {cities.map((option) => (
+                        <MenuItem key={option.id} value={option.city}>
+                        {option.city}
+                        </MenuItem>
+                    ))}
+                </TextField>
+              </form>
           {/* End hero unit */}
           <Grid container spacing={4}>
-           {console.log(donations.toString())}
-            {donations.map((donation) => (
+           
+            {donations.map((donation) => (donation.city === city ) ? ( 
               <Grid item key={donation._id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
@@ -111,7 +142,7 @@ const ListDonations = () => {
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h7" component="h2">
+                    <Typography gutterBottom variant="h6" component="h2">
                     In need of: "{donation.bloodType}" blood type
                     </Typography>
                     <Typography>
@@ -126,7 +157,8 @@ const ListDonations = () => {
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+            ):(<h1></h1>)
+            )}
           </Grid>
         </Container>
         </div>
