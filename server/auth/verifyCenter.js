@@ -3,8 +3,7 @@ const jwt = require('jsonwebtoken');
 module.exports = function auth(req, res, next) {
     // Get auth header value
     console.log("test")
-    const bearerHeader = req.cookies.jwtToken || req.headers.Authorization;
-    console.log(bearerHeader);
+    const bearerHeader = req.cookies.jwtToken || req.headers.Authorization || req.body.donation.owner;
 
     // Check if bearer is undefined
     if(typeof bearerHeader !== 'undefined') {

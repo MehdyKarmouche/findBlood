@@ -61,6 +61,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Dashboard = () => {
+
+  
   const classes = useStyles()
   const [open, setOpen] = useState(false)
   const [openEdit, setOpenEdit] = useState(false)
@@ -75,6 +77,7 @@ const Dashboard = () => {
   const [status,setStatus] = useState(false)
   const [donations, setDonations] = useState([])
   const [donation, setDonation] = useState({
+    owner:localStorage.getItem("jwtToken"),
     id:"",
     bloodType:"",
     importance:"",
@@ -149,11 +152,12 @@ const Dashboard = () => {
   }
 
   const handleSubmit = e => {
+    const jwtToken = localStorage.getItem("jwtToken");
     e.preventDefault()
     fetch('http://localhost:4000/centers/donation', {
       method: 'POST',
       body: JSON.stringify({ donation }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization':jwtToken },
     })
       .then(setDonation({donation})).then(handleClose)
   }
