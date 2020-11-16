@@ -28,12 +28,13 @@ router.get('/donations', /*verifyCenter,*/ function(req,res,next){
 router.post('/donation', /*verifyCenter,*/ function(req, res, next){
     const bloodType = req.body.donation.bloodType;
     const importance = req.body.donation.importance;
-    //const city = req.body.donation.city;
+    const city = req.body.donation.city;
     console.log("HIT")
     //const centerId = req.payload._id;
     
     const newDonation = new Donation({
         //owner:centerId,
+        city,
         bloodType,
         importance,
         postedAt: new Date(),

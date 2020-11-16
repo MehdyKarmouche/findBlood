@@ -73,17 +73,23 @@ const Dashboard = () => {
 
   const [bloodtypeEdit,setBloodtypeEdit] = useState('O+')
   const [importanceEdit,setImportanceEdit] = useState('High')
+
+  const [city,setCity] = React.useState();
   
   const [status,setStatus] = useState(false)
   const [donations, setDonations] = useState([])
   const [donation, setDonation] = useState({
     owner:localStorage.getItem("jwtToken"),
+    city:"",
     id:"",
     bloodType:"",
     importance:"",
     isCompleted:Boolean
   })
-
+  const handleChangeCity = (event) => {
+    setCity(event.target.value)
+    setDonation({...donation, city:event.target.value})
+  }
   const handleOpen = () => {
     setOpen(true);
   };
@@ -273,7 +279,7 @@ const Dashboard = () => {
           aria-describedby="simple-modal-description"
         >
           <DialogContent>
-            <AddDonation handleSubmit={handleSubmit} handleChangeImp={handleChangeImp
+            <AddDonation handleChangeCity={handleChangeCity} handleSubmit={handleSubmit} handleChangeImp={handleChangeImp
             } handleChangeBlood={handleChangeBlood} donation={donation} importances={importances} bloodtypes={bloodtypes}/>
           </DialogContent>
           <DialogActions>

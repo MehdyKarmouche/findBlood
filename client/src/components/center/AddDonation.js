@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import MenuItem from '@material-ui/core/MenuItem';
 import { TextField, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import cities from '../cities'
 
 const useStyles = makeStyles((theme) => ({
     menu: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-const AddDonation = ({handleSubmit, handleChangeImp,handleChangeBlood, donation, importances, bloodtypes}) => {
+const AddDonation = ({handleSubmit, handleChangeCity, handleChangeImp,handleChangeBlood, donation, importances, bloodtypes}) => {
     
     const classes = useStyles()
   
@@ -54,6 +55,20 @@ const AddDonation = ({handleSubmit, handleChangeImp,handleChangeBlood, donation,
           ))}
 
           </TextField>
+          <TextField
+                    className={classes.menu}
+                    select
+                    label="Select city"
+                    value={cities.city}
+                    onChange={handleChangeCity}
+                    variant="outlined"
+                >
+                    {cities.map((option) => (
+                        <MenuItem key={option.id} value={option.city}>
+                        {option.city}
+                        </MenuItem>
+                    ))}
+                </TextField>
       </form>
       <p id="simple-modal-description">
         Select the bloodtype and the importance of the donation you want to create
