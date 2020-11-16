@@ -15,7 +15,7 @@ Web application that helps blood donation agencies and centers to manage their b
   - [x] UI components
   - [x] State management
   - [x] Responsive
-  - [ ] Routing
+  - [x] Routing
  
 ## Few Screenshots
 <img width="947" alt="Login" src="https://user-images.githubusercontent.com/46247214/97780864-96d4de80-1b87-11eb-9c21-3bfeb27dc6b1.PNG">
