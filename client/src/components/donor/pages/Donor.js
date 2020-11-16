@@ -5,9 +5,7 @@ import ListDonations from '../ListDonations';
 import Footer from '../../Footer'
 
 const Donor = () => {
-  
     return (
-      
         <div className="root">
             
             <Navbar />
@@ -17,7 +15,6 @@ const Donor = () => {
               <Footer/>
             </div>
         </div>
-      
     );
   }
   

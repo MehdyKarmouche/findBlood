@@ -4,14 +4,7 @@ import NumDonations from '../NumDonations';
 import Navbar from '../../Navbar';
 import Footer from '../../Footer'
 
-
-
-
-
 const Dashboard = () => {
-  
-  
-  
   return (
     <div className="root">
         <Navbar />

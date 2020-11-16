@@ -14,23 +14,23 @@ const Signin = () => {
 
   return (
     <Router>
-    <div className="signin">
-        <Switch>
-        <Route exact path='/donor/signin' render={props =>
-          <div>
-            <Navbar/>
-            <Signinform />
-            <Footer/>
-          </div>
+      <div className="signin">
+          <Switch>
+          <Route exact path='/donor/signin' render={props =>
+            <div>
+              <Navbar/>
+              <Signinform />
+              <Footer/>
+            </div>
 
-} />
-    <Route exact path="/donor/signup" component={Signup}/>
-    <Route exact path="/center/signin" component={CenterSignin}/>
-    <Route exact path="/" component={Home}/>
-    <Route exact path="/donor/forgot" component={ForgotPassword}/>
-    <Route exact path="/donor" component={Donor}/>
-    </Switch>
-    </div>
+  } />
+      <Route exact path="/donor/signup" component={Signup}/>
+      <Route exact path="/center/signin" component={CenterSignin}/>
+      <Route exact path="/" component={Home}/>
+      <Route exact path="/donor/forgot" component={ForgotPassword}/>
+      <Route exact path="/donor" component={Donor}/>
+      </Switch>
+      </div>
     </Router>
   );
 }

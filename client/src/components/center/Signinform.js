@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%', 
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -61,23 +61,18 @@ const Signinform = () => {
         if(result.token){
           setUser({...user,loggedIn:true,token: result.token})
           localStorage.setItem('jwtToken', result.token)
-          
         }
         else
           console.log("can't login")
-        
-        
       })})
       
   }
  
   
   useEffect(() => {
-    console.log(user);
+   
   });
 
-  /*if(user.loggedIn)
-    return <Redirect exact to="/center/dashboard" />*/
   if(user.loggedIn)
     return <Redirect  exact from="/center/signin" to="/center/dashboard" />
 

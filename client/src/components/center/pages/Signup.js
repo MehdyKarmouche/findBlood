@@ -17,7 +17,6 @@ const Signup = () => {
             <Signupform />
             <Footer/>
           </div>
-
 } />
     <Route exact path="/center/signin" component={Signin}/>
     <Route exact path="/donor/signin" component={DonorSignin}/>

@@ -11,6 +11,7 @@ import Container from '@material-ui/core/Container';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import cities from '../cities'
+
 const useStyles = makeStyles((theme)=>({
   icon: {
     marginRight: theme.spacing(2),
@@ -47,11 +48,7 @@ const useStyles = makeStyles((theme)=>({
     left:"25%",
     marginBottom:"10px"
   }
-
 }));
-
-
-
 
 const ListDonations = () => {
 
@@ -72,18 +69,12 @@ const ListDonations = () => {
   const handleChange = (event) =>{
         const selectedCity = event.target.value;
         setCity(selectedCity)
-        
-        
     }
   async function fetchData(){
     const res = await fetch("http://localhost:4000/donor/donations")
-    
     res
       .json()
       .then(res => setDonations(res));
-      console.log(res);
-
-
   }
   
   useEffect(() => {

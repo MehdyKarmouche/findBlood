@@ -10,19 +10,19 @@ import {BrowserRouter as Router, Route} from  'react-router-dom'
 const Signup = () => {
   return (
     <Router>
-    <div className="Home">
-        <Route exact path='/donor/signup' render={props =>
-          <div>
-            <Navbar/>
-            <Signupform />
-            <Footer/>
-          </div>
+      <div className="Home">
+          <Route exact path='/donor/signup' render={props =>
+            <div>
+              <Navbar/>
+              <Signupform />
+              <Footer/>
+            </div>
 
-} />
-    <Route exact path="/donor/signin" component={Signin}/>
-    <Route exact path="/center/signin" component={CenterSignin}/>
-    <Route exact path="/" component={Home}/>
-    </div>
+    } />
+      <Route exact path="/donor/signin" component={Signin}/>
+      <Route exact path="/center/signin" component={CenterSignin}/>
+      <Route exact path="/" component={Home}/>
+      </div>
     </Router>
   );
 }

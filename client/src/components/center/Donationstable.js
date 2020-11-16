@@ -13,10 +13,10 @@ import Dialog from '@material-ui/core/Dialog';
 import Fab from '@material-ui/core/Fab';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
-import MenuItem from '@material-ui/core/MenuItem';
+
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Title from './Title';
-import { TextField, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import AddDonation from './AddDonation'
@@ -64,9 +64,10 @@ const Dashboard = () => {
 
   
   const classes = useStyles()
+  const token = localStorage.getItem("jwtToken")
   const [open, setOpen] = useState(false)
   const [openEdit, setOpenEdit] = useState(false)
-  const [openPpl, setOpenPpl] = useState(false);
+  const [openPpl, setOpenPpl] = useState(false)
 
   const [bloodtype,setBloodtype] = useState('O+')
   const [importance,setImportance] = useState('High')
@@ -74,8 +75,7 @@ const Dashboard = () => {
   const [bloodtypeEdit,setBloodtypeEdit] = useState('O+')
   const [importanceEdit,setImportanceEdit] = useState('High')
 
-  const [city,setCity] = React.useState();
-
+  const [city,setCity] = React.useState()
   const [clicked,setClicked] = useState()
   
   const [status,setStatus] = useState(false)
@@ -118,7 +118,6 @@ const Dashboard = () => {
 
   const handleOpenPpl = (clickedId) => {
     setOpenPpl(true);
-    console.log("clicked" + clickedId)
     setClicked(clickedId)
   };
 
@@ -150,10 +149,7 @@ const Dashboard = () => {
 
   const handleChangeStatus = (event) => {
     setStatus(event.target.value)
-    console.log("TARGET:")
-    console.log(typeof event.target.value)
     if(event.target.value === 'Completed'){
-      console.log("wa rah completed")
       setDonation({...donation, isCompleted:true})
     }
     else
@@ -198,12 +194,10 @@ const Dashboard = () => {
       .then(res => setDonations(res));
       
   }
-  const token = localStorage.getItem("jwtToken");
   
-
   useEffect(() => {
     fetchData();
-  },[donation]);
+  },[donation])
   
   const bodyPpl = (
     <div>
@@ -216,7 +210,7 @@ const Dashboard = () => {
         </TableHead>
         <TableBody>
           
-          {donations.map((donation) => (donation._id == clicked) ? (
+          {donations.map((donation) => (donation.id == clicked) ? (
             <TableRow key={donation._id} id={donation._id}>
               <TableCell>{donation.peopleInterested}</TableCell>
             </TableRow>
@@ -224,7 +218,7 @@ const Dashboard = () => {
         </TableBody>
       </Table>
     </div>
-  );
+  )
 
   return (
     <React.Fragment>

@@ -67,7 +67,7 @@ const Signinform = () => {
       
   }
   useEffect(() => {
-    console.log(user);
+    
   });
   
   if(user.loggedIn)

@@ -20,8 +20,6 @@ const useStyles = makeStyles({
   paper: {
     marginLeft:"20px",
     marginTop:"20px",
-    
-
   }
 });
 

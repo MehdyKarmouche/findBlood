@@ -45,10 +45,7 @@ const Forgot = () => {
         method: 'POST',
         body: JSON.stringify({ user }),
         headers: { 'Content-Type': 'application/json' },
-      })
-        .then(res => console.log(res))
-        
-        
+      })     
     }
     return(
         <Container component="main" maxWidth="xs">

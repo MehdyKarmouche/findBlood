@@ -8,9 +8,6 @@ const useStyles = makeStyles((theme) => ({
       width:"100%",
       marginBottom:"10px",
       marginTop:"10px"
-    },
-    body: {
-
     }
   }));
 

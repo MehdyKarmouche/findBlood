@@ -1,24 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-import cities from '../cities'
+
 
 const useStyles = makeStyles({
-    heroContent: {
-        
-    },
+  
     heroSelect: {
         alignItems:"center"
       },
-      form: {
-        
-        
-    },
     textfield: {
         align:"center",
         width:"50%",
@@ -29,10 +19,6 @@ const useStyles = makeStyles({
 const CallForAction = () => {
     const classes = useStyles();
     const [city,setCity] = React.useState();
-
-    const handleChange = (event) =>{
-        setCity(event.target.value)
-    }
   
     return (
         <div>
