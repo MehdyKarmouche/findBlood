@@ -9,7 +9,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import MenuItem from '@material-ui/core/MenuItem';
 import {BrowserRouter as Router, Route, Redirect} from  'react-router-dom'
+import cities from '../cities'
+import bloodtypes from '../bloodtypes'
 
 
 
@@ -43,6 +46,19 @@ const SignUpForm = () => {
     bloodType:"",
     signedIn:false
   })
+  const [city,setCity] = useState()
+  const [blood,setBlood] = useState()
+  const handleChangeBlood = (event) => {
+    const selectedBlood = event.target.value;
+    setBlood(selectedBlood)
+    setUser({ ...user, bloodType: selectedBlood })
+  }
+  const handleChangeCity = (event) => {
+    const selectedCity = event.target.value;
+    setCity(selectedCity)
+    setUser({ ...user, city: selectedCity })
+
+  }
 
   
 
@@ -117,29 +133,38 @@ const SignUpForm = () => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="current-city"
-                name="city[city]"
-                variant="outlined"
-                required
-                fullWidth
-                id="city"
-                label="City"
-                autoFocus
-                onChange={e => setUser({ ...user, city: e.target.value })}
-              />
+            <TextField
+                    className={classes.textfield}
+                    select
+                    label="Select your city"
+                    value={cities.city}
+                    onChange={handleChangeCity}
+                    variant="outlined"
+                    fullWidth
+                >
+                    {cities.map((option) => (
+                        <MenuItem key={option.id} value={option.city}>
+                        {option.city}
+                        </MenuItem>
+                    ))}
+                </TextField>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="bloodType"
-                label="Blood type"
-                name="bloodType[bloodType]"
-                autoComplete="bloodtype"
-                onChange={e => setUser({ ...user, bloodType: e.target.value })}
-              />
+            <TextField
+                    className={classes.textfield}
+                    select
+                    label="Select your blood type"
+                    value={bloodtypes.bloodtype}
+                    onChange={handleChangeBlood}
+                    variant="outlined"
+                    fullWidth
+                >
+                    {bloodtypes.map((option) => (
+                        <MenuItem key={option.id} value={option.bloodtype}>
+                        {option.bloodtype}
+                        </MenuItem>
+                    ))}
+                </TextField>
             </Grid>
           </Grid>
           <Button
