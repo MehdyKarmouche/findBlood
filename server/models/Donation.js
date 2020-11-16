@@ -11,7 +11,7 @@ const donationSchema = new Schema({
     isCompleted: {type: Boolean, required: true},
     completedAt: {type:Date},
     city: {type: String},
-    peopleInterested: []
+    peopleInterested: {type: String}
 });
 
 module.exports=mongoose.model('Donation', donationSchema);

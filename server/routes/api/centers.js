@@ -39,7 +39,7 @@ router.post('/donation', /*verifyCenter,*/ function(req, res, next){
         importance,
         postedAt: new Date(),
         isCompleted: false,
-        peopleInterested: 0
+        peopleInterested:""
       });
     
       newDonation.save();
