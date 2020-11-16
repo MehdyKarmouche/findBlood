@@ -26,7 +26,7 @@ const EditDonation = ({donation,handleChangeEditBlood, handleChangeStatus,  hand
             select
             label="Select blood type"
             name="bloodType"
-            value={donation.bloodtype}
+            value={donation.bloodType}
             onChange={handleChangeEditBlood}
             variant="outlined"
             required

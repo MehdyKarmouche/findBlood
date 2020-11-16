@@ -6,37 +6,8 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import cities from '../cities'
 
-const cities = [
-    {
-        id:1,
-        city: "Casablanca"
-    },
-    {
-        id:2,
-        city: "Rabat"
-    },
-    {
-        id:3,
-        city: "Tanger"
-    },
-    {
-        id:4,
-        city: "Meknes"
-    },
-    {
-        id:5,
-        city: "Fes"
-    },
-    {
-        id:6,
-        city: "Marrakech"
-    },
-    {
-        id:7,
-        city: "Agadir"
-    },
-]
 const useStyles = makeStyles({
     heroContent: {
         
