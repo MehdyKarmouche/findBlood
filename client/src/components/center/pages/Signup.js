@@ -4,6 +4,7 @@ import Signupform from '../Signupform';
 import Signin from './Signin';
 import Home from '../../Home'
 import DonorSignin from '../../donor/pages/Signin'
+import Footer from '../../Footer'
 import {BrowserRouter as Router, Route} from  'react-router-dom'
 
 const Signup = () => {
@@ -14,6 +15,7 @@ const Signup = () => {
           <div>
             <Navbar/>
             <Signupform />
+            <Footer/>
           </div>
 
 } />
