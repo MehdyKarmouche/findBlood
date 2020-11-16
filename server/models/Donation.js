@@ -10,6 +10,7 @@ const donationSchema = new Schema({
     postedAt: {type: Date, required: true},
     isCompleted: {type: Boolean, required: true},
     completedAt: {type:Date},
+    city: {type: String},
     peopleInterested: []
 });
 

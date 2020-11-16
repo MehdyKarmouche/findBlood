@@ -28,6 +28,7 @@ router.get('/donations', /*verifyCenter,*/ function(req,res,next){
 router.post('/donation', /*verifyCenter,*/ function(req, res, next){
     const bloodType = req.body.donation.bloodType;
     const importance = req.body.donation.importance;
+    const city = req.body.donation.city;
     console.log("HIT")
     const centerId = "5f53cf1f3e0f4c4bb03f45fe"
     
