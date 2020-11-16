@@ -18,7 +18,6 @@ const App = () => {
       
         <Route exact path="/center/signin" component={CenterSignin} />
         <Route exact path="/donor/signin" component={DonorSignin} />
-        <Route exact path="/donor" component={Donor} />
         <Route path="/" component={Home} />
       
       </Switch>
