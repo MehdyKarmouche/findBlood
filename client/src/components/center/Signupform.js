@@ -9,6 +9,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {BrowserRouter as Router, Route, Redirect} from  'react-router-dom'
 
 
 
@@ -43,19 +44,28 @@ const SignUpForm = () => {
     city:"",
     district:"",
     street:"",
-    zipcode:""
+    zipcode:"",
+    signedIn:false
   })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetch('http://localhost:4000/signUp/center', {
+    fetch('http://localhost:4000/signup/center', {
       method: 'POST',
       body: JSON.stringify({ user }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json'  },
     })
-      .then(res => res.json())
-      .then(json => setUser(json.user))
+      .then(res =>{res.json().then((result)=>{
+        if(result.msg!="Email already exists"){
+          setUser({...user,signedIn:true})
+        }
+        else
+          console.log("can't login")
+      })})
+      
   }
+  if(user.signedIn)
+    return <Redirect  exact from="/center/signup" to="/center/signin" />
   return (
     
     <Container component="main" maxWidth="xs">
