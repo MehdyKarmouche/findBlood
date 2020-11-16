@@ -36,16 +36,15 @@ router.put('/profile', verifyDonor, function(req, res, next){
 
 //interested for a donation at a center
 router.post('/interested',verifyDonor, function(req, res, next){
-    
+    console.log("HELLO")
     const donorId = req.payload._id;
-    const donationId = req.body.donationId;
+    console.log(req.body)
+    const donationId = req.body.toSend.donationId
+    
 
     Donation.findById({_id:donationId}).then(donation=>{
-        let interested = {
-            id : donorId,
-            actionDate: new Date() 
-        }
-        donation.peopleInterested.push(interested);
+        
+        donation.peopleInterested = donorId;
         donation.save();
         res.json(donation)
     })

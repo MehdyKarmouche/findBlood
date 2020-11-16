@@ -75,6 +75,8 @@ const Dashboard = () => {
   const [importanceEdit,setImportanceEdit] = useState('High')
 
   const [city,setCity] = React.useState();
+
+  const [clicked,setClicked] = useState()
   
   const [status,setStatus] = useState(false)
   const [donations, setDonations] = useState([])
@@ -114,8 +116,10 @@ const Dashboard = () => {
     setOpenEdit(false)
   };
 
-  const handleOpenPpl = () => {
+  const handleOpenPpl = (clickedId) => {
     setOpenPpl(true);
+    console.log("clicked" + clickedId)
+    setClicked(clickedId)
   };
 
   const handleClosePpl = () => {
@@ -207,20 +211,16 @@ const Dashboard = () => {
       <Table className={classes.table} size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Email</TableCell>
-            <TableCell>Phone</TableCell>
-            
-            <TableCell>City</TableCell>
+            <TableCell>ID of potential Donor</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {donations.map((donation) => (
+          
+          {donations.map((donation) => (donation._id == clicked) ? (
             <TableRow key={donation._id} id={donation._id}>
-              <TableCell>{donation. peopleInterested}</TableCell>
-              <TableCell>{donation. peopleInterested}</TableCell>
-              <TableCell>{donation. peopleInterested}</TableCell>
+              <TableCell>{donation.peopleInterested}</TableCell>
             </TableRow>
-          ))}
+          ) : (<h1></h1>))}
         </TableBody>
       </Table>
     </div>

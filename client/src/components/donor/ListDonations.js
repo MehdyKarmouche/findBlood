@@ -44,7 +44,8 @@ const useStyles = makeStyles((theme)=>({
   textfield: {
     align:"center",
     width:"50%",
-    left:"25%"
+    left:"25%",
+    marginBottom:"10px"
   }
 
 }));
@@ -56,10 +57,22 @@ const ListDonations = () => {
 
   const [donations, setDonations] = useState([]);
   const [city,setCity] = React.useState();
-
-    const handleChange = (event) =>{
+  const handleDonate = (donationId) => {
+    const jwtToken = localStorage.getItem("jwtToken")
+    const toSend = {
+      "jwtToken": jwtToken,
+      donationId: donationId
+    }
+    fetch('http://localhost:4000/donor/interested', {
+      method: 'POST',
+      body: JSON.stringify({toSend}),
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }
+  const handleChange = (event) =>{
         const selectedCity = event.target.value;
         setCity(selectedCity)
+        
         
     }
   async function fetchData(){
@@ -117,7 +130,7 @@ const ListDonations = () => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button variant="contained" size="small" color="primary">
+                    <Button onClick={() => handleDonate(donation._id)} variant="contained" size="small" color="primary">
                       Donate
                     </Button>
                     
