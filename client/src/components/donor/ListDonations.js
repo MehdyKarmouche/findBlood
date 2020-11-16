@@ -50,39 +50,6 @@ const useStyles = makeStyles((theme)=>({
 }));
 
 
-const cards = [
-    {
-        id:1,
-        address:"hay zayd",
-        phone:"05364892384",
-    },
-    {
-        id:2,
-        address:"hay zayd",
-        phone:"05364892384",
-    },
-    {
-        id:3,
-        address:"hay zayd",
-        phone:"05364892384",
-    },
-    {
-        id:4,
-        address:"hay zayd",
-        phone:"05364892384",
-    },
-    {
-        id:5,
-        address:"hay zayd",
-        phone:"05364892384",
-    },
-    {
-        id:6,
-        address:"hay zayd",
-        phone:"05364892384",
-    },
-];
-
 
 
 const ListDonations = () => {
