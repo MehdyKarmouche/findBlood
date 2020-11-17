@@ -7,7 +7,7 @@ import Dashboard from './Dashboard';
 import ForgotPassword from './ForgotPassword';
 import Home from '../../Home'
 import Footer from '../../Footer'
-import {BrowserRouter as Router, Route,Redirect,Switch} from  'react-router-dom'
+import {BrowserRouter as Router, Route,Switch} from  'react-router-dom'
 
 const Signin = () => {
   return (

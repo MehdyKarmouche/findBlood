@@ -224,9 +224,9 @@ const Dashboard = () => {
     <React.Fragment>
       <div className={classes.wrap}>
       <Title>Recent Donations</Title>
-      <Button onClick={handleOpen} variant="contained" size="medium" color="secondary">Add Donation  <Fab size="small" color="primary" aria-label="add" className={classes.margin}>
+      <Button onClick={handleOpen} variant="contained" size="medium" color="secondary">Add Donation  
         <AddIcon />
-        </Fab>
+     
       </Button>
      
 

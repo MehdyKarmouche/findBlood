@@ -9,7 +9,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {BrowserRouter as Router, Route, Redirect} from  'react-router-dom'
+import {BrowserRouter as Router, Redirect} from  'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -53,7 +53,7 @@ const SignUpForm = () => {
       headers: { 'Content-Type': 'application/json'  },
     })
       .then(res =>{res.json().then((result)=>{
-        if(result.msg!="Email already exists"){
+        if(result.msg!=="Email already exists"){
           setUser({...user,signedIn:true})
         }
         else

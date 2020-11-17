@@ -90,7 +90,7 @@ const ListDonations = () => {
                     className={classes.textfield}
                     select
                     label="Select city"
-                    value={cities.city}
+                    value={city}
                     onChange={handleChange}
                     variant="outlined"
                 >
@@ -128,7 +128,7 @@ const ListDonations = () => {
                   </CardActions>
                 </Card>
               </Grid>
-            ):(<h1></h1>)
+            ):(<h1 key={donation._id}></h1>)
             )}
           </Grid>
         </Container>

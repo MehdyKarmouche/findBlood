@@ -70,7 +70,7 @@ const HomeContent = () => {
       
     </div>
     <Container className={classes.wrapper}>
-    <Typography>
+    <Typography component="div">
     <Grid className={classes.Grid} container spacing={3}>
             <Grid  item xs={6}>
                 <Link to="/center/signin" style={{ textDecoration: 'none' }}>
@@ -81,7 +81,7 @@ const HomeContent = () => {
             </Grid>
             <Grid item xs={6}>
                 <Link to="/donor/signin" style={{ textDecoration: 'none' }}>
-                    <Button href className={classes.buttonLeft} display="inline" variant="contained" color="secondary" size="large">
+                    <Button  className={classes.buttonLeft} display="inline" variant="contained" color="secondary" size="large">
                         Donor
                     </Button>
                 </Link>
