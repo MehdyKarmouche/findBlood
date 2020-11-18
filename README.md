@@ -10,7 +10,7 @@ Web application that helps blood donation agencies and centers to manage their b
   - [x] Routing: Used react router to show and redirect the user to different screens while checking his jwt
  ### Backend
   - [x] Define Database Models
-  - [x] REST Api: different endpoints to fetch, persist data and 
+  - [x] REST Api: different endpoints to fetch, persist data...
   - [x] Email service: Send email to users to notify that their account has to be verified 
   - [x] Authorization with JWT for different roles
   - [x] Account verification: Center accounts needs to be verified by an admin before login in
