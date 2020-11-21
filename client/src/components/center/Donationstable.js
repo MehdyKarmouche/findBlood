@@ -238,6 +238,7 @@ const Dashboard = () => {
             <TableCell><strong>Importance</strong></TableCell>
             <TableCell><strong>Posted at</strong></TableCell>
             <TableCell><strong>Status</strong></TableCell>
+            <TableCell><strong>City</strong></TableCell>
             <TableCell align="right"><strong>Interested ppl</strong></TableCell>
             <TableCell><strong>Edit</strong></TableCell>
             
@@ -252,6 +253,7 @@ const Dashboard = () => {
               <TableCell>{
                 donation.isCompleted ? <CheckBoxIcon color="primary"/> : <HighlightOffIcon color="secondary"/>
               }</TableCell>
+              <TableCell>{donation.city}</TableCell>
               <TableCell align="right"><Button onClick={() => handleOpenPpl(donation._id)} variant="outlined" color="secondary"><VisibilityIcon></VisibilityIcon></Button></TableCell>
               <TableCell><Button onClick={() => handleOpenEdit(donation._id)} variant="outlined" color="secondary"><EditIcon></EditIcon></Button></TableCell>
 
